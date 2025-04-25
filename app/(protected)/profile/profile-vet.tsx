@@ -10,9 +10,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import GoogleMapsComponent from "@/components/GoogleMap";
-import { Reservation } from "@/components/Reservation"
+import { Calendar } from "@/components/ui/calendar";
+import { TimePicker } from "@/components/ui/time-picker";
+import { Label } from "@/components/ui/label";
 
 // Données fictives pour les vétérinaires (identiques à celles de la page des vétérinaires)
 const veterinaries = [
@@ -87,6 +91,11 @@ const veterinaries = [
 export default function ProfileVet() {
   const searchParams = useSearchParams();
   const id = Number(searchParams.get('id'));
+  const router = useRouter();
+  
+  // State for reservation
+  const [date, setDate] = useState<Date | undefined>();
+  const [time, setTime] = useState<string>("");
   
   // Trouver les données du vétérinaire en fonction de l'ID
   const selectedVet = veterinaries.find(vet => vet.id === id);
@@ -148,6 +157,15 @@ export default function ProfileVet() {
       );
     }
     return stars;
+  };
+
+  const handleReserve = () => {
+    if (date && time) {
+      // Log the reservation details
+      console.log('Réservation:', { date, time });
+      // Navigate to payment page
+      router.push('/payment');
+    }
   };
 
   return (
@@ -266,13 +284,65 @@ export default function ProfileVet() {
             {/* Section de réservation */}
             <div className="pt-4 border-t">
               <h3 className="font-semibold mb-4">Prendre un Rendez-vous</h3>
-              <Reservation 
-                price={Number(profile.consultationFee)} 
-                onReserve={(date, time) => {
-                  // Gérer la réservation
-                  console.log('Réservation:', { date, time })
-                }} 
-              />
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Calendar Section */}
+                <div className="space-y-4">
+                  <Label className="text-lg">Sélectionner une Date</Label>
+                  <div className="flex justify-center">
+                    <Calendar
+                      mode="single"
+                      selected={date}
+                      onSelect={setDate}
+                      className="rounded-md border w-full"
+                      classNames={{
+                        months: "flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4",
+                        month: "w-full",
+                        caption: "flex justify-center pt-1 relative items-center",
+                        caption_label: "text-sm font-medium",
+                        nav: "space-x-1 flex items-center",
+                        nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+                        nav_button_previous: "absolute left-1",
+                        nav_button_next: "absolute right-1",
+                        table: "w-full border-collapse space-y-1",
+                        head_row: "flex",
+                        head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+                        row: "flex w-full mt-2",
+                        cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+                        day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
+                        day_selected: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+                        day_today: "bg-accent text-accent-foreground",
+                        day_outside: "text-muted-foreground opacity-50",
+                        day_disabled: "text-muted-foreground opacity-50",
+                        day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+                        day_hidden: "invisible",
+                      }}
+                    />
+                  </div>
+                </div>
+                
+                {/* Time Picker Section */}
+                <div className="space-y-4">
+                  <Label className="text-lg">Sélectionner L'Heure</Label>
+                  <div className="flex justify-center">
+                    <TimePicker value={time} onValueChange={setTime} />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8 space-y-4">
+                <div className="text-lg font-semibold">
+                  Prix: {profile.consultationFee} DZD
+                </div>
+                
+                <Button 
+                  className="w-full" 
+                  onClick={handleReserve}
+                  disabled={!date || !time}
+                >
+                  Réserver un Rendez-vous
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
