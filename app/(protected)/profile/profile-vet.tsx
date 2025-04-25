@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 import GoogleMapsComponent from "@/components/GoogleMap";
 import { TimePicker } from "@/components/ui/time-picker";
 import { Label } from "@/components/ui/label";
-import { DatePickerWithRange } from "@/components/Calendar-nopopover";
+import { DatePicker } from "@/components/Calendar-nopopover";
 
 // Données fictives pour les vétérinaires (identiques à celles de la page des vétérinaires)
 const veterinaries = [
@@ -285,17 +285,13 @@ export default function ProfileVet() {
             <div className="pt-4 border-t">
               <h3 className="font-semibold mb-4">Prendre un Rendez-vous</h3>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex flex-col gap-8">
                 {/* Calendar Section */}
                 <div className="space-y-4">
                   <Label className="text-lg">Sélectionner une Date</Label>
                   <div className="flex justify-center">
-                    <DatePickerWithRange 
-                      onDateChange={(dateRange) => {
-                        if (dateRange?.from) {
-                          setDate(dateRange.from);
-                        }
-                      }}
+                    <DatePicker 
+                      onDateChange={setDate}
                     />
                   </div>
                 </div>
