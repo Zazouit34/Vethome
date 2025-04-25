@@ -14,9 +14,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import GoogleMapsComponent from "@/components/GoogleMap";
-import { Calendar } from "@/components/ui/calendar";
 import { TimePicker } from "@/components/ui/time-picker";
 import { Label } from "@/components/ui/label";
+import { DatePickerWithRange } from "@/components/Calendar-nopopover";
 
 // Données fictives pour les vétérinaires (identiques à celles de la page des vétérinaires)
 const veterinaries = [
@@ -290,32 +290,11 @@ export default function ProfileVet() {
                 <div className="space-y-4">
                   <Label className="text-lg">Sélectionner une Date</Label>
                   <div className="flex justify-center">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      className="rounded-md border w-full"
-                      classNames={{
-                        months: "flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4",
-                        month: "w-full",
-                        caption: "flex justify-center pt-1 relative items-center",
-                        caption_label: "text-sm font-medium",
-                        nav: "space-x-1 flex items-center",
-                        nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
-                        nav_button_previous: "absolute left-1",
-                        nav_button_next: "absolute right-1",
-                        table: "w-full border-collapse space-y-1",
-                        head_row: "flex",
-                        head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
-                        row: "flex w-full mt-2",
-                        cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-                        day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
-                        day_selected: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-                        day_today: "bg-accent text-accent-foreground",
-                        day_outside: "text-muted-foreground opacity-50",
-                        day_disabled: "text-muted-foreground opacity-50",
-                        day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
-                        day_hidden: "invisible",
+                    <DatePickerWithRange 
+                      onDateChange={(dateRange) => {
+                        if (dateRange?.from) {
+                          setDate(dateRange.from);
+                        }
                       }}
                     />
                   </div>
