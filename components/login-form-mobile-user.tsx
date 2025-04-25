@@ -18,7 +18,7 @@ export function LoginFormMobile({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push("/auth/professional/create-profile")
+    router.push("/auth/user/create-profile")
   }
 
   return (

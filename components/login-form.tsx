@@ -21,7 +21,7 @@ export function LoginForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push("/auth/user/create-profile")
+    router.push("/auth/professional/create-profile")
   }
 
   return (
