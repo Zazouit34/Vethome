@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { DatePickerWithRange } from "@/components/Calendar";
 import { useRouter } from "next/navigation";
+import { FileText, FileImage } from "lucide-react";
 
 export default function CreateProfile() {
   const router = useRouter();
@@ -31,8 +32,15 @@ export default function CreateProfile() {
     const file = e.target.files?.[0];
     if (file) {
       setCertificate(file);
-      const url = URL.createObjectURL(file);
-      setPreviewUrl(url);
+      
+      // Check if the file is an image
+      if (file.type.startsWith('image/')) {
+        const url = URL.createObjectURL(file);
+        setPreviewUrl(url);
+      } else {
+        // For non-image files, we'll just show the filename
+        setPreviewUrl(null);
+      }
     }
   };
 
@@ -101,6 +109,20 @@ export default function CreateProfile() {
                         fill
                         className="object-contain"
                       />
+                    </div>
+                  ) : certificate ? (
+                    <div className="flex flex-col items-center justify-center p-4">
+                      {certificate.type === 'application/pdf' ? (
+                        <FileText className="h-12 w-12 text-primary mb-2" />
+                      ) : (
+                        <FileImage className="h-12 w-12 text-primary mb-2" />
+                      )}
+                      <span className="font-medium truncate max-w-full">
+                        {certificate.name}
+                      </span>
+                      <span className="text-sm text-muted-foreground mt-1">
+                        {(certificate.size / 1024).toFixed(1)} KB
+                      </span>
                     </div>
                   ) : (
                     <div className="text-muted-foreground">
