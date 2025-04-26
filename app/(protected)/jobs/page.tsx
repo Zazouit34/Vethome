@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Bell } from "lucide-react";
 import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
 
 const annonces = [
   {
@@ -19,7 +20,7 @@ const annonces = [
   },
   {
     name: "Sihem Latrech",
-    image: "/veterinary-woman.jpg",
+    image: "/review-image.jpg",
     description:
       "Étudiante en Master de médecine vétérinaire à l'ITMAUF d'Alger, je suis à la recherche d'un stage pratique en clinique vétérinaire. Je propose également d'accompagner un praticien pour des missions de terrain, analyses, ou administration. Disponible dès maintenant, références universitaires sur demande.",
   },
@@ -58,14 +59,13 @@ export default function JobPage() {
       {/* Proposition de stage */}
       <div className="px-4 mb-6">
         <label className="block font-medium text-gray-700 mb-1">Proposition de stage</label>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            placeholder="Publiez votre proposition"
-            value={proposition}
-            onChange={e => setProposition(e.target.value)}
-            className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-rose-200"
-          />
+        <Textarea
+          placeholder="Publiez votre proposition"
+          value={proposition}
+          onChange={e => setProposition(e.target.value)}
+          className="mb-2"
+        />
+        <div className="flex justify-end">
           <button className="bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-lg px-5 py-2 transition">Publier</button>
         </div>
       </div>
