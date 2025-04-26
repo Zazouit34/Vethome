@@ -37,18 +37,22 @@ const services = [
   {
     name: "Vet",
     image: "/veterinary-man.jpg",
+    link: "/veterinaries",
   },
   {
     name: "Toilettage",
     image: "/toilettage.png", // Use your dog with pink hat image here
+    link: "/toilettage",
   },
   {
     name: "Garderie",
     image: "/garderie.png",
+    link: "/hosting",
   },
   {
     name: "Autre",
     image: "/pet-image.png",
+    link: "/autre",
   },
 ];
 
@@ -89,13 +93,14 @@ export default function MainPage() {
       <div className="px-4 mt-4 md:max-w-6xl md:mx-auto">
         <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 md:gap-6 md:justify-center">
           {services.map((service) => (
-            <div
+            <Link
               key={service.name}
+              href={service.link}
               className="flex items-center bg-white border border-gray-300 rounded-full px-4 py-2 gap-3 min-w-[170px] md:min-w-[200px] shadow-sm hover:shadow transition-all cursor-pointer"
             >
               <Image src={service.image} alt={service.name} width={36} height={36} className="rounded-full w-9 h-9 object-cover border border-gray-200" />
               <span className="text-base font-medium text-gray-700 whitespace-nowrap">{service.name}</span>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
