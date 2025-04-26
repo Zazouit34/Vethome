@@ -39,6 +39,7 @@ export default function Component() {
         </Sheet>
 
         {/* Logo - Centered on mobile, Left on desktop */}
+        {/*
         <Link 
           href="/main" 
           className="flex items-center lg:mr-6"
@@ -53,6 +54,7 @@ export default function Component() {
             priority
           />
         </Link>
+        */}
 
         {/* Desktop Navigation */}
         <nav className="ml-auto hidden lg:flex gap-6">

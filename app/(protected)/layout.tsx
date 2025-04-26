@@ -1,5 +1,5 @@
 import Navbar from "@/components/navbar";
-
+import Footer from "@/components/footer";
 export default function ProtectedLayout({
   children,
 }: {
@@ -11,6 +11,7 @@ export default function ProtectedLayout({
       <main className="flex-1">
         {children}
       </main>
+      <Footer />
     </div>
   );
 } 

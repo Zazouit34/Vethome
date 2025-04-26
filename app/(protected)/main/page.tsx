@@ -73,7 +73,7 @@ export default function MainPage() {
         </button>
       </div>
       {/* Search Bar */}
-      <div className="px-4 mt-2 md:max-w-3xl md:mx-auto">
+      <div className="px-4 mt-2 md:max-w-6xl md:mx-auto">
         <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
           <Search className="text-gray-400 w-5 h-5 mr-2" />
           <input
@@ -86,7 +86,7 @@ export default function MainPage() {
         </div>
       </div>
       {/* Service Navigation */}
-      <div className="px-4 mt-4 md:max-w-3xl md:mx-auto">
+      <div className="px-4 mt-4 md:max-w-6xl md:mx-auto">
         <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 md:gap-6 md:justify-center">
           {services.map((service) => (
             <div
@@ -100,7 +100,7 @@ export default function MainPage() {
         </div>
       </div>
       {/* Vethub Section */}
-      <div className="px-4 mt-6 md:max-w-3xl md:mx-auto">
+      <div className="px-4 mt-6 md:max-w-6xl md:mx-auto">
         <div className="flex gap-4 md:gap-8">
           <div className="flex-1 rounded-xl overflow-hidden relative">
             <Image src="/veterinary-female.png" alt="stage" width={160} height={100} className="w-full h-40 md:h-48 object-cover" />
@@ -113,7 +113,7 @@ export default function MainPage() {
         </div>
       </div>
       {/* Top spécialistes */}
-      <div className="px-4 mt-8 md:max-w-3xl md:mx-auto">
+      <div className="px-4 mt-8 md:max-w-6xl md:mx-auto">
         <div className="font-semibold mb-3">Top spécialistes</div>
         <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 md:gap-6 md:justify-center">
           {filteredVeterinaries.map((vet) => (
@@ -133,7 +133,7 @@ export default function MainPage() {
         </div>
       </div>
       {/* Shopping Section */}
-      <div className="px-4 mt-8 md:max-w-3xl md:mx-auto mb-8">
+      <div className="px-4 mt-8 md:max-w-6xl md:mx-auto mb-8">
         <div className="font-semibold mb-3">Shopping</div>
         <div className="flex gap-4 md:gap-8">
           <div className="flex-1 bg-rose-200 rounded-xl flex flex-col items-center justify-center p-3">
