@@ -127,14 +127,14 @@ export default function AccessoriesPage() {
           {filteredAccessories.map((accessory, idx) => (
             <div
               key={accessory.name}
-              className={`rounded-2xl p-3 flex flex-col items-center justify-between border shadow-sm relative ${accessory.bg} ${accessory.border}`}
+              className={`rounded-2xl p-3 h-52 flex flex-col items-center justify-between border shadow-sm relative ${accessory.bg} ${accessory.border}`}
             >
               <Image
                 src={accessory.image}
                 alt={accessory.name}
                 width={64}
                 height={64}
-                className="object-contain mb-2"
+                className="object-contain mb-2 max-h-20"
               />
               <div className="font-semibold text-gray-800 text-sm text-center mb-1">{accessory.name}</div>
               <div className="text-xs text-gray-500 mb-2">{accessory.price}</div>

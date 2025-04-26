@@ -127,14 +127,14 @@ export default function FoodPage() {
           {filteredFoods.map((food, idx) => (
             <div
               key={food.name}
-              className={`rounded-2xl p-3 flex flex-col items-center justify-between border shadow-sm relative ${food.bg} ${food.border}`}
+              className={`rounded-2xl p-3 h-52 flex flex-col items-center justify-between border shadow-sm relative ${food.bg} ${food.border}`}
             >
               <Image
                 src={food.image}
                 alt={food.name}
                 width={64}
                 height={64}
-                className="object-contain mb-2"
+                className="object-contain mb-2 max-h-20"
               />
               <div className="font-semibold text-gray-800 text-sm text-center mb-1">{food.name}</div>
               <div className="text-xs text-gray-500 mb-2">{food.price}</div>
