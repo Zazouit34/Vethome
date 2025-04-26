@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Search, Filter, Bell, Plus } from "lucide-react";
+import { Search, Filter, Bell, Plus, Star } from "lucide-react";
 
 const pets = [
   {
@@ -88,20 +88,29 @@ export default function AdoptionPage() {
       <div className="px-4 mt-6 md:max-w-6xl md:mx-auto mb-8">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {filteredPets.map((pet, idx) => (
-            <div
-              key={pet.name}
-              className="bg-white rounded-2xl shadow-md p-3 flex flex-col items-center relative"
-            >
-              <Image
-                src={pet.image}
-                alt={pet.name}
-                width={120}
-                height={120}
-                className="rounded-xl object-cover w-24 h-24 mb-2"
-              />
-              <div className="font-semibold text-base text-gray-900 text-center mb-1">{pet.name}</div>
-              <div className="text-sm text-gray-500 text-center mb-1">{pet.age}</div>
-              <div className="text-xs text-gray-400 text-center">{pet.breed}</div>
+            <div key={pet.name} className="flex flex-col items-center">
+              <div className="relative w-full flex justify-center">
+                <Image
+                  src={pet.image}
+                  alt={pet.name}
+                  width={240}
+                  height={180}
+                  className="rounded-t-2xl object-cover w-full h-40 shadow-md z-10"
+                  style={{ maxWidth: '100%', objectPosition: 'center' }}
+                />
+                <div className="absolute top-3 right-3 z-20">
+                  <div className="bg-white/80 rounded-full p-1 shadow">
+                    <Star className="w-6 h-6 text-rose-400 fill-white" />
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white w-full rounded-b-2xl -mt-6 pt-6 pb-4 px-4 shadow-md flex flex-col items-start">
+                <div className="flex w-full items-center justify-between mb-1">
+                  <span className="font-extrabold text-lg text-gray-900">{pet.name}</span>
+                  <span className="text-base font-semibold text-gray-400">{pet.age}</span>
+                </div>
+                <div className="text-sm text-gray-400">{pet.breed}</div>
+              </div>
             </div>
           ))}
         </div>

@@ -28,7 +28,7 @@ export default function CleaningPage() {
     <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-6xl md:mx-auto">
-        <Image src={user.image} alt="profile" width={48} height={48} className="rounded-full w-12 h-12 md:w-20 md:h-20 object-cover" />
+        <Image src={user.image} alt="profile" width={96} height={96} className="rounded-full w-12 h-12 md:w-20 md:h-20 object-cover" />
         <span className="font-bold text-lg md:text-2xl text-rose-400">Bienvenue, {user.name}</span>
         <button className="relative">
           <Bell className="w-7 h-7 text-gray-700" />
