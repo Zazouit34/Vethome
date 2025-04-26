@@ -1,7 +1,7 @@
 'use client'
 
-import { Icons } from '@/components/icons';
 import { useRouter } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
 
 const days = [
   { day: 'Dim', date: 11 },
@@ -18,7 +18,9 @@ export default function VetReservation() {
   return (
     <div className="min-h-screen flex flex-col bg-white relative pb-24 md:pb-0">
       {/* Back Button */}
-      <button onClick={() => router.back()} className="absolute left-4 top-6 text-2xl md:left-10 md:top-10">←</button>
+      <button onClick={() => router.back()} className="absolute left-4 top-6 text-2xl md:left-10 md:top-10">
+        <ArrowLeft className="w-6 h-6" />
+      </button>
       {/* Header */}
       <h1 className="text-2xl font-bold mt-8 mb-4 md:mt-16 md:text-4xl md:mb-8 ml-10 md:ml-0 text-center md:text-center">Juin 2025</h1>
       {/* Date Selector */}

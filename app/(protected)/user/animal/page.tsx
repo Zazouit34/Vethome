@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { ArrowLeft } from 'lucide-react';
 
 export default function AnimalProfile() {
   const router = useRouter();
@@ -30,7 +31,9 @@ export default function AnimalProfile() {
   return (
     <div className="min-h-screen flex flex-col bg-white relative pb-24 md:pb-0 px-4 md:px-8">
       {/* Back Button */}
-      <button onClick={() => router.back()} className="absolute left-4 top-6 text-2xl md:left-10 md:top-10">←</button>
+      <button onClick={() => router.back()} className="absolute left-4 top-6 text-2xl md:left-10 md:top-10">
+        <ArrowLeft className="w-6 h-6" />
+      </button>
       
       {/* Header */}
       <h1 className="text-2xl font-bold mt-16 mb-6 md:text-4xl text-center">Profil de mon animal</h1>

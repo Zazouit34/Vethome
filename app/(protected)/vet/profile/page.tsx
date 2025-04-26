@@ -2,13 +2,15 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-
+import { ArrowLeft } from 'lucide-react';
 export default function VetProfileInfo() {
   const router = useRouter();
   return (
     <div className="min-h-screen flex flex-col items-center bg-white relative pb-24 md:pb-0">
       {/* Back Button */}
-      <button onClick={() => router.back()} className="absolute left-4 top-6 text-2xl md:left-10 md:top-10">←</button>
+      <button onClick={() => router.back()} className="absolute left-4 top-6 text-2xl md:left-10 md:top-10">
+        <ArrowLeft className="w-6 h-6" />
+      </button>
       {/* Header */}
       <h1 className="text-xl font-bold mt-8 mb-6 md:mt-16 md:text-4xl">Informations personnelles</h1>
       {/* Profile Image */}

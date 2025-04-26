@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { Filter, MapPin, UserPlus } from 'lucide-react';
+import { Filter, MapPin, UserPlus, ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { DatePicker } from '@/components/Calendar-nopopover';
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select';
@@ -11,7 +12,7 @@ const garderies = [
   {
     id: 1,
     title: 'Garderie chat pilo',
-    image: '/host-1.png',
+    image: '/host-2.png',
     rating: 4,
     comments: 27,
     subtitle: 'Hebergement géré par un particulier',
@@ -21,7 +22,7 @@ const garderies = [
   {
     id: 2,
     title: 'Garderie dog happy',
-    image: '/host-2.png',
+    image: '/host-1.png',
     rating: 5,
     comments: 12,
     subtitle: 'Hebergement géré par un particulier',
@@ -75,10 +76,16 @@ export default function HousingPage() {
   const [address, setAddress] = useState('');
   const [numAnimals, setNumAnimals] = useState('1');
   const [animalType, setAnimalType] = useState('dog');
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-white py-8 px-2 md:px-8">
-      <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 text-center">Garderies</h1>
+      <div className="flex items-center justify-center gap-3 mb-4">
+        <button onClick={() => router.back()} className="text-gray-700 hover:text-rose-400 transition p-1">
+          <ArrowLeft className="w-6 h-6" />
+        </button>
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-800 text-center">Garderies</h1>
+      </div>
       {!stepDone ? (
         <div className="max-w-md mx-auto flex flex-col gap-6 bg-white p-6 rounded-2xl shadow mb-8">
           <div>
