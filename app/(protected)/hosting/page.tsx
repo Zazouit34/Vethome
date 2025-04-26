@@ -66,24 +66,6 @@ const garderies = [
   },
 ];
 
-function PawRating({ rating }: { rating: number }) {
-  const paws = [];
-  for (let i = 1; i <= 5; i++) {
-    paws.push(
-      <span key={i} className="inline-block align-middle">
-        <Image
-          src={i <= rating ? '/rate-selected.png' : '/rate-unselected.png'}
-          alt={i <= rating ? 'Paw filled' : 'Paw unfilled'}
-          width={20}
-          height={20}
-          className="inline-block align-middle"
-        />
-      </span>
-    );
-  }
-  return <span className="ml-1">{paws}</span>;
-}
-
 export default function HousingPage() {
   return (
     <div className="min-h-screen bg-white py-8 px-2 md:px-8">
@@ -98,16 +80,17 @@ export default function HousingPage() {
           <span className="font-medium">Map</span>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {garderies.map((g, idx) => (
           <div key={idx} className="bg-white rounded-3xl shadow-xl p-4 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 transition hover:shadow-2xl">
             <div className="flex-shrink-0 flex justify-center items-center">
               <Image src={g.image} alt={g.title} width={120} height={120} className="rounded-2xl object-cover w-32 h-32" />
             </div>
             <div className="flex-1 flex flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-lg md:text-xl text-gray-900">{g.title}</span>
-                <PawRating rating={g.rating} />
+              <span className="font-bold text-lg md:text-xl text-gray-900">{g.title}</span>
+              <div className="flex items-center gap-2 mt-1">
+                <Image src="/rate-selected.png" alt="Paw" width={20} height={20} className="inline-block align-middle" />
+                <span className="text-base text-gray-700 font-semibold">{g.rating}</span>
                 <span className="text-xs text-gray-500 flex items-center ml-2">
                   <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#F95D7F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   {g.comments} commentaires

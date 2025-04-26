@@ -6,8 +6,8 @@ import Link from 'next/link';
 const veterinaries = [
   {
     id: 1,
-    name: 'Dr. Mouloud Sala',
-    image: '/veterinary-man.jpg',
+    name: 'Dr. Lina Bensouna',
+    image: '/veterinary-woman-1.jpg',
     specialization: 'Exotic Specialist',
     rating: 4.8,
     schedule: 'Dim - Jed, 12:00 - 9:00 PM',
@@ -15,8 +15,8 @@ const veterinaries = [
   },
   {
     id: 2,
-    name: 'Dr. Kalini Jithma',
-    image: '/veterinary-woman-1.jpg',
+    name: 'Dr. Samy Boudiaf',
+    image: '/veterinary-man.jpg',
     specialization: 'Generalist',
     rating: 4.0,
     schedule: 'Lun - Ven, 9:00 - 6:00 PM',
@@ -24,7 +24,7 @@ const veterinaries = [
   },
   {
     id: 3,
-    name: 'Dr. Amira Loudji',
+    name: 'Dr. Hafidha Merzouki',
     image: '/veterinary-woman.jpg',
     specialization: 'Surgery',
     rating: 3.6,
@@ -32,9 +32,6 @@ const veterinaries = [
     location: 'Clinic visite',
   },
 ];
-
-// Duplicate to make 6 cards
-const vetList = [...veterinaries, ...veterinaries];
 
 function PawRating({ rating }: { rating: number }) {
   const paws = [];
@@ -59,7 +56,7 @@ export default function VeterinariesPage() {
     <div className="min-h-screen bg-white py-8 px-2 md:px-8">
       <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-8 text-center">Vétérinaires</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {vetList.map((vet, idx) => (
+        {veterinaries.map((vet, idx) => (
           <div
             key={idx}
             className="bg-white rounded-3xl shadow-xl p-6 flex flex-col h-full transition hover:shadow-2xl"
