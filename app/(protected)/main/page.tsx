@@ -9,23 +9,23 @@ import { Search } from "lucide-react";
 const veterinaries = [
   {
     id: 1,
-    name: "Dr. Mouloud sala",
-    image: "/veterinary-man.jpg",
+    name: "Dr. Lina Bensouna",
+    image: "/veterinary-woman-1.jpg",
     specialization: "Docteur vétérinaire",
     rating: 4.8,
     distance: 8,
   },
   {
     id: 2,
-    name: "Dr. Kalini Jithma",
-    image: "/veterinary-woman-1.jpg",
+    name: "Dr. Samy Boudiaf",
+    image: "/veterinary-man.jpg",
     specialization: "Docteur vétérinaire",
     rating: 4.0,
     distance: 12,
   },
   {
     id: 3,
-    name: "Dr. Amira loudji",
+    name: "Dr. Hafidha Merzouki",
     image: "/veterinary-woman.jpg",
     specialization: "Docteur vétérinaire",
     rating: 3.6,

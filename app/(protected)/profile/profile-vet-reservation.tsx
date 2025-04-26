@@ -23,7 +23,7 @@ const veterinaries = [
   {
     id: 1,
     name: "Dr. Lina Bensouna",
-    image: "/veterinary-female.png",
+    image: "/veterinary-woman-1.jpg",
     specialization: "Médecine Générale",
     rating: 4.8,
     reviews: 124,

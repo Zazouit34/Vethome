@@ -58,25 +58,25 @@ export default function VeterinariesPage() {
   return (
     <div className="min-h-screen bg-white py-8 px-2 md:px-8">
       <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-8 text-center">Vétérinaires</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {vetList.map((vet, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-3xl shadow-xl p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 transition hover:shadow-2xl relative"
+            className="bg-white rounded-3xl shadow-xl p-6 flex flex-col h-full transition hover:shadow-2xl"
           >
-            <div className="flex-shrink-0 flex justify-center items-center">
+            <div className="flex items-center gap-4 mb-2">
               <div className="rounded-full border-4 border-rose-400 p-1 w-20 h-20 flex items-center justify-center bg-white">
                 <Image src={vet.image} alt={vet.name} width={72} height={72} className="rounded-full object-cover w-16 h-16" />
               </div>
-            </div>
-            <div className="flex-1 flex flex-col gap-1">
-              <div className="flex items-center gap-2">
+              <div className="flex-1 flex flex-col gap-1">
                 <span className="font-bold text-lg md:text-xl text-gray-900">{vet.name}</span>
+                <div className="text-gray-500 text-sm mb-1">{vet.specialization}</div>
+                <div className="flex items-center gap-2 mb-1">
+                  <PawRating rating={vet.rating} />
+                </div>
               </div>
-              <div className="text-gray-500 text-sm mb-1">{vet.specialization}</div>
-              <div className="flex items-center gap-2 mb-1">
-                <PawRating rating={vet.rating} />
-              </div>
+            </div>
+            <div className="flex flex-col gap-1 flex-1">
               <div className="flex items-center gap-2 text-gray-600 text-sm mb-1">
                 <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M8 7V3h8v4" stroke="#666" strokeWidth="1.5" strokeLinecap="round"/><rect x="3" y="7" width="18" height="14" rx="2" stroke="#666" strokeWidth="1.5"/></svg>
                 {vet.schedule}
@@ -86,7 +86,7 @@ export default function VeterinariesPage() {
                 {vet.location}
               </div>
             </div>
-            <Link href={`/profile?id=${vet.id}`} className="md:absolute md:right-8 md:top-1/2 md:-translate-y-1/2 mt-4 md:mt-0">
+            <Link href={`/profile?id=${vet.id}`} className="self-end mt-auto">
               <button className="bg-rose-400 hover:bg-rose-500 text-white rounded-full px-8 py-2 text-lg font-semibold shadow-md transition">Détaille</button>
             </Link>
           </div>
