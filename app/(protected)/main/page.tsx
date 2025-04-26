@@ -69,15 +69,19 @@ export default function MainPage() {
     <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-6xl md:mx-auto">
-        <Image
-          src="/review-image-1.jpg"
-          alt="profile"
-          width={96}
-          height={96}
-          className="rounded-full w-12 h-12 md:w-24 md:h-24 object-cover"
-        />
-        <div className="font-bold text-base text-rose-500">Bienvenue, Samy Boudiaf</div>
-        <div className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</div>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/review-image-1.jpg"
+            alt="Samy Boudiaf"
+            width={96}
+            height={96}
+            className="rounded-full w-12 h-12 md:w-24 md:h-24 object-cover border-2 border-white shadow"
+          />
+          <div className="flex flex-col">
+            <span className="font-bold text-base md:text-lg text-rose-500">Bienvenue, Samy Boudiaf</span>
+            <span className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</span>
+          </div>
+        </div>
         <button className="relative">
           <Bell className="w-6 h-6 text-gray-800" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-rose-400 rounded-full border-2 border-white"></span>
@@ -154,18 +158,24 @@ export default function MainPage() {
       <div className="px-4 mt-8 md:max-w-6xl md:mx-auto mb-8">
         <div className="font-semibold mb-3">Shopping</div>
         <div className="flex gap-4 md:gap-8">
-          <div className="flex-1 bg-rose-200 rounded-xl flex flex-col items-center justify-center p-3">
-            <span className="font-semibold text-xs mb-2">Nourriture</span>
-            <Image src="/nourriture.png" alt="Nourriture" width={48} height={48} className="w-12 h-12 object-contain" />
-          </div>
-          <div className="flex-1 bg-blue-100 rounded-xl flex flex-col items-center justify-center p-3">
-            <span className="font-semibold text-xs mb-2">Médicaments</span>
-            <Image src="/medicament.png" alt="Médicaments" width={48} height={48} className="w-12 h-12 object-contain" />
-          </div>
-          <div className="flex-1 bg-pink-100 rounded-xl flex flex-col items-center justify-center p-3">
-            <span className="font-semibold text-xs mb-2">Accessoires</span>
-            <Image src="/accessoir.png" alt="Accessoires" width={48} height={48} className="w-12 h-12 object-contain" />
-          </div>
+          <Link href="/food" className="flex-1">
+            <div className="bg-rose-200 rounded-xl flex flex-col items-center justify-center p-3 cursor-pointer hover:shadow-md transition">
+              <span className="font-semibold text-xs mb-2">Nourriture</span>
+              <Image src="/nourriture.png" alt="Nourriture" width={48} height={48} className="w-12 h-12 object-contain" />
+            </div>
+          </Link>
+          <Link href="#" className="flex-1">
+            <div className="bg-blue-100 rounded-xl flex flex-col items-center justify-center p-3 cursor-pointer hover:shadow-md transition">
+              <span className="font-semibold text-xs mb-2">Médicaments</span>
+              <Image src="/medicament.png" alt="Médicaments" width={48} height={48} className="w-12 h-12 object-contain" />
+            </div>
+          </Link>
+          <Link href="#" className="flex-1">
+            <div className="bg-pink-100 rounded-xl flex flex-col items-center justify-center p-3 cursor-pointer hover:shadow-md transition">
+              <span className="font-semibold text-xs mb-2">Accessoires</span>
+              <Image src="/accessoir.png" alt="Accessoires" width={48} height={48} className="w-12 h-12 object-contain" />
+            </div>
+          </Link>
         </div>
       </div>
     </div>
