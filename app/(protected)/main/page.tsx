@@ -76,7 +76,8 @@ export default function MainPage() {
           height={96}
           className="rounded-full w-12 h-12 md:w-24 md:h-24 object-cover"
         />
-        <span className="font-bold text-lg text-rose-400">Bienvenue, Samy Boudiaf</span>
+        <div className="font-bold text-base text-rose-500">Bienvenue, Samy Boudiaf</div>
+        <div className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</div>
         <button className="relative">
           <Bell className="w-6 h-6 text-gray-800" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-rose-400 rounded-full border-2 border-white"></span>
