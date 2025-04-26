@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { Search, Bell } from "lucide-react";
 
 // Données fictives pour les vétérinaires
 const veterinaries = [
@@ -78,7 +78,7 @@ export default function MainPage() {
         />
         <span className="font-bold text-lg text-rose-400">Bienvenue, Samy Boudiaf</span>
         <button className="relative">
-          <svg width="26" height="26" fill="none" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <Bell className="w-6 h-6 text-gray-800" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-rose-400 rounded-full border-2 border-white"></span>
         </button>
       </div>
@@ -114,12 +114,18 @@ export default function MainPage() {
       <div className="px-4 mt-6 md:max-w-6xl md:mx-auto">
         <div className="flex gap-4 md:gap-8">
           <div className="flex-1 rounded-xl overflow-hidden relative">
-            <Image src="/veterinary-female.png" alt="stage" width={160} height={100} className="w-full h-40 md:h-48 object-cover" />
-            <div className="absolute bottom-0 left-0 right-0 p-3 text-sm font-medium bg-gradient-to-t from-black/60 to-transparent text-white">Trouvez votre stage</div>
+            <Link href="/jobs" className="block h-full w-full">
+              <Image src="/veterinary-female.png" alt="stage" width={160} height={100} className="w-full h-40 md:h-48 object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 text-sm font-medium bg-gradient-to-t from-black/60 to-transparent text-white">Trouvez votre stage</div>
+            </Link>
           </div>
           <div className="flex-1 rounded-xl overflow-hidden relative">
-            <Image src="/pet-image.png" alt="adoptez" width={160} height={100} className="w-full h-40 md:h-48 object-cover" />
-            <div className="absolute bottom-0 left-0 right-0 p-3 text-sm font-medium bg-gradient-to-t from-black/60 to-transparent text-white">Adoptez, changez Une vie</div>
+            <Link href="/adoption" className="block h-full w-full">
+              <Image src="/pet-image.png" alt="adoptez" width={160} height={100} className="w-full h-40 md:h-48 object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 text-sm font-medium bg-gradient-to-t from-black/60 to-transparent text-white">
+                Adoptez, changez Une vie
+              </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function CleaningPage() {
   return (
     <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-3xl md:mx-auto">
+      <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-6xl md:mx-auto">
         <Image src={user.image} alt="profile" width={48} height={48} className="rounded-full w-12 h-12 md:w-20 md:h-20 object-cover" />
         <span className="font-bold text-lg md:text-2xl text-rose-400">Bienvenue, {user.name}</span>
         <button className="relative">
@@ -38,9 +38,9 @@ export default function CleaningPage() {
       {/* Cute message */}
       <div className="text-center text-gray-500 text-base mt-2 mb-2 md:max-w-3xl md:mx-auto">Comment vas votre compagnon aujourd'hui !</div>
       {/* Subtitle */}
-      <div className="text-center text-lg font-semibold text-gray-700 mb-6 md:max-w-3xl md:mx-auto">Quel service pour votre compagnon aujourd'hui ?</div>
+      <div className="text-center text-lg font-semibold text-gray-700 mb-6 md:max-w-6xl md:mx-auto">Quel service pour votre compagnon aujourd'hui ?</div>
       {/* Service Cards */}
-      <div className="px-4 md:max-w-3xl md:mx-auto">
+      <div className="px-4 md:max-w-6xl md:mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, idx) => (
             <div key={idx} className="relative rounded-2xl overflow-hidden shadow-lg h-48 md:h-56 flex items-end group cursor-pointer">
