@@ -1,11 +1,11 @@
 
 import { Suspense } from 'react';
-import ProfileVet from './profile-vet';
+import ProfileVetReservation from './profile-vet-reservation';
 
 export default function VeterinaryProfile() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <ProfileVet />
+      <ProfileVetReservation />
     </Suspense>
   );
 } 

@@ -33,7 +33,7 @@ export default function CreateUserProfile() {
   };
 
   const handleComplete = () => {
-    router.push('/veterinaries');
+    router.push('/main');
   };
 
   const renderStep = () => {

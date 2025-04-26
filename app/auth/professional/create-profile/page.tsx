@@ -45,7 +45,7 @@ export default function CreateProfile() {
   };
 
   const handleComplete = () => {
-    router.push('/veterinaries');
+    router.push('/vet');
   };
 
   const renderStep = () => {

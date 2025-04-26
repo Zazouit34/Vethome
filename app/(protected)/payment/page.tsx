@@ -32,7 +32,7 @@ export default function PaymentPage() {
             </p>
             <Button 
               className="mt-4" 
-              onClick={() => router.push('/veterinaries')}
+              onClick={() => router.push('/main')}
             >
               Retour à l'Accueil
             </Button>
