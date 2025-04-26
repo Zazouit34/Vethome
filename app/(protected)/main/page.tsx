@@ -12,83 +12,40 @@ import { Search, MapPin } from "lucide-react";
 const veterinaries = [
   {
     id: 1,
-    name: "Dr. Lina Bensouna",
-    image: "/veterinary-female.png",
-    specialization: "Médecine Générale",
+    name: "Dr. Mouloud sala",
+    image: "/veterinary-man.jpg",
+    specialization: "Docteur vétérinaire",
     rating: 4.8,
-    reviews: 124,
-    price: 500,
-    address: "123 Centre Médical, Alger",
-    availability: "Disponible Aujourd'hui"
+    distance: 8,
   },
   {
     id: 2,
-    name: "Dr. Samy Boudiaf",
-    image: "/veterinary-man.jpg",
-    specialization: "Spécialiste en Chirurgie",
-    rating: 4.9,
-    reviews: 89,
-    price: 700,
-    address: "456 Rue des Soins Animaliers, Alger",
-    availability: "Prochaine Disponibilité: Demain"
+    name: "Dr. Kalini Jithma",
+    image: "/veterinary-woman-1.jpg",
+    specialization: "Docteur vétérinaire",
+    rating: 4.0,
+    distance: 12,
   },
   {
     id: 3,
-    name: "Dr. Leila Messaoudi",
+    name: "Dr. Amira loudji",
     image: "/veterinary-woman.jpg",
-    specialization: "Dermatologie",
-    rating: 4.7,
-    reviews: 56,
-    price: 600,
-    address: "789 Avenue de la Santé Animale, Alger",
-    availability: "Disponible Aujourd'hui"
+    specialization: "Docteur vétérinaire",
+    rating: 3.6,
+    distance: 14,
   },
-  {
-    id: 4,
-    name: "Dr. Ahmed Benali",
-    image: "/veterinary-man-1.jpg",
-    specialization: "Soins d'Urgence",
-    rating: 4.6,
-    reviews: 78,
-    price: 800,
-    address: "321 Soins d'Urgence pour Animaux, Alger",
-    availability: "Disponible 24/7"
-  },
-  {
-    id: 5,
-    name: "Sara Mansouri",
-    image: "/veterinary-woman-1.jpg",
-    specialization: "Interne Vétérinaire",
-    rating: 4.3,
-    reviews: 15,
-    price: 300,
-    address: "567 Hôpital Universitaire, Alger",
-    availability: "Disponible Aujourd'hui"
-  },
-  {
-    id: 6,
-    name: "Dr. Karim Ziani",
-    image: "/veterinary-man-2.jpg",
-    specialization: "Spécialiste des Animaux Exotiques",
-    rating: 4.9,
-    reviews: 92,
-    price: 900,
-    address: "890 Centre pour Animaux Exotiques, Alger",
-    availability: "Prochaine Disponibilité: Demain"
-  },
-  // Ajoutez plus de vétérinaires si nécessaire
 ];
 
-export default function VeterinariesPage() {
+export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredVeterinaries = veterinaries.filter(vet =>
     vet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     vet.specialization.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    vet.address.toLowerCase().includes(searchQuery.toLowerCase())
+    vet.distance.toString().includes(searchQuery.toLowerCase())
   );
 
-  const renderRating = (rating: number, reviews: number) => {
+  const renderRating = (rating: number, distance: number) => {
     return (
       <div className="flex items-center gap-1">
         <Image
@@ -100,75 +57,112 @@ export default function VeterinariesPage() {
         />
         <span className="text-sm font-medium">{rating}</span>
         <span className="text-sm text-muted-foreground">
-          ({rating} • {reviews} avis)
+          ({rating} • {distance} km)
         </span>
       </div>
     );
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      {/* En-tête avec Recherche */}
-      <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-xl border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-700 dark:text-white">Trouver un Vétérinaire</h1>
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                placeholder="Rechercher par nom, spécialisation ou lieu..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
+    <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-2xl md:mx-auto">
+        <Image src="/veterinary-woman.jpg" alt="profile" width={48} height={48} className="rounded-full w-12 h-12 object-cover" />
+        <span className="font-bold text-lg text-rose-400">Bienvenue, Dr. Hafidha</span>
+        <button className="relative">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <span className="absolute top-0 right-0 w-2 h-2 bg-rose-400 rounded-full border-2 border-white"></span>
+        </button>
+      </div>
+      {/* Search Bar */}
+      <div className="px-4 mt-2 md:max-w-2xl md:mx-auto">
+        <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
+          <Search className="text-gray-400 w-5 h-5 mr-2" />
+          <input
+            type="text"
+            placeholder="Rechercher"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            className="bg-transparent outline-none flex-1 text-base placeholder-gray-400"
+          />
+        </div>
+      </div>
+      {/* Service Navigation */}
+      <div className="px-4 mt-4 md:max-w-2xl md:mx-auto">
+        <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+          <div className="flex flex-col items-center min-w-[72px]">
+            <div className="bg-rose-100 rounded-full p-3 mb-1">
+              <Image src="/veterinary-man.jpg" alt="Vet" width={32} height={32} className="rounded-full" />
             </div>
+            <span className="text-xs font-medium">Vet</span>
+          </div>
+          <div className="flex flex-col items-center min-w-[72px]">
+            <div className="bg-rose-100 rounded-full p-3 mb-1">
+              <Image src="/rate-selected.png" alt="Toilettage" width={32} height={32} />
+            </div>
+            <span className="text-xs font-medium">Toilettage</span>
+          </div>
+          <div className="flex flex-col items-center min-w-[72px]">
+            <div className="bg-gray-200 rounded-full p-3 mb-1">
+              <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#888" strokeWidth="2" /><path d="M8 12h8" stroke="#888" strokeWidth="2" strokeLinecap="round" /></svg>
+            </div>
+            <span className="text-xs font-medium">Garde</span>
+          </div>
+          <div className="flex flex-col items-center min-w-[72px]">
+            <div className="bg-gray-200 rounded-full p-3 mb-1">
+              <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="6" stroke="#888" strokeWidth="2" /></svg>
+            </div>
+            <span className="text-xs font-medium">Autre</span>
           </div>
         </div>
       </div>
-
-      {/* Contenu Principal */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Vethub Section */}
+      <div className="px-4 mt-6 md:max-w-2xl md:mx-auto">
+        <div className="flex gap-4">
+          <div className="flex-1 bg-gray-100 rounded-xl overflow-hidden">
+            <Image src="/veterinary-female.png" alt="stage" width={160} height={100} className="w-full h-24 object-cover" />
+            <div className="p-2 text-sm font-medium">Trouvez votre stage</div>
+          </div>
+          <div className="flex-1 bg-gray-100 rounded-xl overflow-hidden">
+            <Image src="/pet-image.png" alt="adoptez" width={160} height={100} className="w-full h-24 object-cover" />
+            <div className="p-2 text-sm font-medium">Adoptez, <br />changez Une vie</div>
+          </div>
+        </div>
+      </div>
+      {/* Top spécialistes */}
+      <div className="px-4 mt-8 md:max-w-2xl md:mx-auto">
+        <div className="font-semibold mb-3">Top spécialistes</div>
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
           {filteredVeterinaries.map((vet) => (
-            <Link 
-              href={`/profile?id=${vet.id}`} 
-              key={vet.id}
-              className="block transition-transform hover:scale-[1.02]"
-            >
-              <Card className="overflow-hidden h-full">
-                <div className="p-4">
-                  <div className="relative h-48 rounded-lg overflow-hidden shadow-md">
-                    <Image
-                      src={vet.image}
-                      alt={vet.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+            <Link href={`/profile?id=${vet.id}`} key={vet.id} className="min-w-[180px]">
+              <div className="bg-white rounded-xl shadow p-3 flex flex-col items-center">
+                <Image src={vet.image} alt={vet.name} width={56} height={56} className="rounded-full w-14 h-14 object-cover mb-2" />
+                <div className="font-semibold text-sm text-center mb-1">{vet.name}</div>
+                <div className="text-xs text-gray-500 mb-1">{vet.specialization}</div>
+                <div className="flex items-center gap-1 text-xs text-gray-500 mb-1">
+                  {renderRating(vet.rating, vet.distance)}
                 </div>
-                <div className="px-4 pb-4 space-y-4">
-                  <div>
-                    <h2 className="text-xl font-semibold">{vet.name}</h2>
-                    <p className="text-muted-foreground">{vet.specialization}</p>
-                  </div>
-                  
-                  {renderRating(vet.rating, vet.reviews)}
-                  
-                  <div className="flex items-start gap-2">
-                    <MapPin className="h-4 w-4 mt-1 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground">{vet.address}</p>
-                  </div>
-                  
-                  <div className="flex items-center justify-between pt-2">
-                    <p className="text-lg font-semibold">{vet.price} DZD</p>
-                    <span className="text-sm text-green-600 dark:text-green-400">
-                      {vet.availability}
-                    </span>
-                  </div>
-                </div>
-              </Card>
+              </div>
             </Link>
           ))}
+        </div>
+      </div>
+      {/* Shopping Section */}
+      <div className="px-4 mt-8 md:max-w-2xl md:mx-auto mb-8">
+        <div className="font-semibold mb-3">Shopping</div>
+        <div className="flex gap-4">
+          <div className="flex-1 bg-rose-200 rounded-xl flex flex-col items-center justify-center p-3">
+            <span className="font-semibold text-xs mb-2">Nourriture</span>
+            <Image src="/nourriture.png" alt="Nourriture" width={48} height={48} className="w-12 h-12 object-contain" />
+          </div>
+          <div className="flex-1 bg-blue-100 rounded-xl flex flex-col items-center justify-center p-3">
+            <span className="font-semibold text-xs mb-2">Médicaments</span>
+            <Image src="/medicament.png" alt="Médicaments" width={48} height={48} className="w-12 h-12 object-contain" />
+          </div>
+          <div className="flex-1 bg-pink-100 rounded-xl flex flex-col items-center justify-center p-3">
+            <span className="font-semibold text-xs mb-2">Accessoires</span>
+            <Image src="/accessoire.png" alt="Accessoires" width={48} height={48} className="w-12 h-12 object-contain" />
+          </div>
         </div>
       </div>
     </div>

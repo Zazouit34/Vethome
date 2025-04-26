@@ -44,7 +44,7 @@ const veterinaries = [
   },
   {
     id: 3,
-    name: "Dr. Leila Messaoudi",
+    name: "Dr. Hafidha Merzouki",
     image: "/veterinary-woman.jpg",
     specialization: "Dermatologie",
     rating: 4.7,

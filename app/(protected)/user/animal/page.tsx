@@ -101,13 +101,13 @@ export default function AnimalProfile() {
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <Button 
             className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition"
-            
+            onClick={() => router.push('/user/user')}
           >
             Modifier les informations
           </Button>
           <Button 
             className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition"
-            
+            onClick={() => router.push('/main')}
           >
             Prendre un rendez-vous
           </Button>

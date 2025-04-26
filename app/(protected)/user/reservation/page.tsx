@@ -36,19 +36,6 @@ export default function UserReservations() {
           </div>
         </div>
       </div>
-      {/* Placeholder for more reservations */}
-      <div className="w-full flex flex-col items-center mt-8 gap-6">
-        <div className="w-20 h-20 bg-gray-100 rounded-full" />
-        <div className="w-3/4 h-4 bg-gray-100 rounded mb-1" />
-        <div className="w-2/3 h-4 bg-gray-100 rounded mb-1" />
-        <div className="w-1/2 h-4 bg-gray-100 rounded mb-1" />
-      </div>
-      {/* Bottom Navigation (Mobile only) */}
-      <div className="fixed bottom-0 left-0 w-full flex justify-center items-center h-20 bg-white rounded-t-3xl shadow-lg md:hidden">
-        <div className="bg-white rounded-full p-2 shadow-md">
-          <Icons.logo className="w-12 h-12 text-rose-300" />
-        </div>
-      </div>
     </div>
   );
 }

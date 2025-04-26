@@ -33,7 +33,7 @@ export default function CreateUserProfile() {
   };
 
   const handleComplete = () => {
-    router.push('/main');
+    router.push('/user');
   };
 
   const renderStep = () => {
