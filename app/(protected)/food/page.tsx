@@ -41,10 +41,26 @@ const foods = [
   {
     name: "Milk-bone",
     price: "850DA",
-    image: "/milkbone.png",
+    image: "/milk-bone.png",
     category: "dog",
     bg: "bg-pink-50",
     border: "border-pink-300",
+  },
+  {
+    name: "Friskies",
+    price: "1200DA",
+    image: "/friskies.png",
+    category: "cat",
+    bg: "bg-blue-50",
+    border: "border-blue-300",
+  },
+  {
+    name: "Canistar",
+    price: "2800DA",
+    image: "/canistar.png",
+    category: "dog",
+    bg: "bg-purple-50",
+    border: "border-purple-300",
   },
 ];
 
@@ -98,7 +114,7 @@ export default function FoodPage() {
             <button
               key={cat.value}
               onClick={() => setSelectedCategory(cat.value)}
-              className={`px-4 py-1 rounded-full border text-sm font-medium transition min-w-[80px] whitespace-nowrap ${selectedCategory === cat.value ? "bg-rose-400 text-white border-rose-400" : "bg-white text-gray-700 border-gray-300"}`}
+              className={`px-4 py-1 rounded-full border text-sm font-medium transition w-auto whitespace-nowrap ${selectedCategory === cat.value ? "bg-rose-400 text-white border-rose-400" : "bg-white text-gray-700 border-gray-300"}`}
             >
               {cat.label}
             </button>
