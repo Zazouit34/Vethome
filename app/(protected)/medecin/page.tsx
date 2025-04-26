@@ -13,75 +13,75 @@ const categories = [
   { label: "Rongeur", value: "rodent" },
 ];
 
-const foods = [
+const medicines = [
   {
-    name: "Vitakraft",
-    price: "800DA",
-    image: "/vitakraft.png",
+    name: "Injection chien",
+    price: "1000DA",
+    image: "/injection-chien.png",
     category: "dog",
     bg: "bg-yellow-50",
     border: "border-yellow-300",
   },
   {
-    name: "Edgard",
-    price: "3500DA",
-    image: "/edgard.png",
-    category: "dog",
+    name: "Injection chat",
+    price: "1000DA",
+    image: "/injection-chat.png",
+    category: "cat",
     bg: "bg-green-50",
     border: "border-green-300",
   },
   {
-    name: "Goldfish",
-    price: "250DA",
-    image: "/goldfish.png",
-    category: "fish",
+    name: "Vermifuge dog",
+    price: "500DA",
+    image: "/vermifuge-dog.png",
+    category: "dog",
     bg: "bg-orange-50",
     border: "border-orange-300",
   },
   {
-    name: "Milk-bone",
-    price: "850DA",
-    image: "/milk-bone.png",
-    category: "dog",
+    name: "comprime bird",
+    price: "300DA",
+    image: "/comprime-bird.png",
+    category: "bird",
     bg: "bg-pink-50",
     border: "border-pink-300",
   },
   {
-    name: "Friskies",
-    price: "1200DA",
-    image: "/friskies.png",
+    name: "digest cat",
+    price: "600DA",
+    image: "/digest-cat.png",
     category: "cat",
     bg: "bg-blue-50",
     border: "border-blue-300",
   },
   {
-    name: "Canistar",
-    price: "2800DA",
-    image: "/canistar.png",
+    name: "Anti-puce dog",
+    price: "1200DA",
+    image: "/antipuce-dog.png",
     category: "dog",
     bg: "bg-purple-50",
     border: "border-purple-300",
   },
 ];
 
-export default function FoodPage() {
+export default function MedicinePage() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [cartCount, setCartCount] = useState(0);
   const [animateCart, setAnimateCart] = useState(false);
 
-  const filteredFoods = foods.filter(
-    (f) =>
-      (selectedCategory === "all" || f.category === selectedCategory) &&
-      (f.name.toLowerCase().includes(search.toLowerCase()) ||
-        f.price.toLowerCase().includes(search.toLowerCase()))
+  const filteredMedicines = medicines.filter(
+    (m) =>
+      (selectedCategory === "all" || m.category === selectedCategory) &&
+      (m.name.toLowerCase().includes(search.toLowerCase()) ||
+        m.price.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <div className="min-h-screen bg-white pb-8">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2">
-        <span className="font-bold text-lg text-gray-900">Nourriture</span>
+        <span className="font-bold text-lg text-gray-900">Médicaments</span>
         <div className="relative">
           <ShoppingCart className="w-6 h-6 text-gray-800" />
           {cartCount > 0 && (
@@ -100,7 +100,7 @@ export default function FoodPage() {
           <Search className="text-gray-400 w-5 h-5 mr-2" />
           <input
             type="text"
-            placeholder="Rechercher un produit ou une marque"
+            placeholder="Rechercher un médicament ou une marque"
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="bg-transparent outline-none flex-1 text-base placeholder-gray-400"
@@ -121,23 +121,23 @@ export default function FoodPage() {
           ))}
         </div>
       </div>
-      {/* Food Grid */}
+      {/* Medicines Grid */}
       <div className="px-4 mt-4">
         <div className="grid grid-cols-2 gap-4">
-          {filteredFoods.map((food, idx) => (
+          {filteredMedicines.map((medicine, idx) => (
             <div
-              key={food.name}
-              className={`rounded-2xl p-3 flex flex-col items-center justify-between border shadow-sm relative ${food.bg} ${food.border}`}
+              key={medicine.name}
+              className={`rounded-2xl p-3 flex flex-col items-center justify-between border shadow-sm relative ${medicine.bg} ${medicine.border}`}
             >
               <Image
-                src={food.image}
-                alt={food.name}
+                src={medicine.image}
+                alt={medicine.name}
                 width={64}
                 height={64}
                 className="object-contain mb-2"
               />
-              <div className="font-semibold text-gray-800 text-sm text-center mb-1">{food.name}</div>
-              <div className="text-xs text-gray-500 mb-2">{food.price}</div>
+              <div className="font-semibold text-gray-800 text-sm text-center mb-1">{medicine.name}</div>
+              <div className="text-xs text-gray-500 mb-2">{medicine.price}</div>
               <button
                 className="absolute bottom-3 right-3 bg-rose-400 hover:bg-rose-500 text-white rounded-md p-2 shadow transition"
                 onClick={() => {

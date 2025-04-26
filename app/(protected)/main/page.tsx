@@ -164,13 +164,13 @@ export default function MainPage() {
               <Image src="/nourriture.png" alt="Nourriture" width={48} height={48} className="w-12 h-12 object-contain" />
             </div>
           </Link>
-          <Link href="#" className="flex-1">
+          <Link href="/medecin" className="flex-1">
             <div className="bg-blue-100 rounded-xl flex flex-col items-center justify-center p-3 cursor-pointer hover:shadow-md transition">
               <span className="font-semibold text-xs mb-2">Médicaments</span>
               <Image src="/medicament.png" alt="Médicaments" width={48} height={48} className="w-12 h-12 object-contain" />
             </div>
           </Link>
-          <Link href="#" className="flex-1">
+          <Link href="/accessories" className="flex-1">
             <div className="bg-pink-100 rounded-xl flex flex-col items-center justify-center p-3 cursor-pointer hover:shadow-md transition">
               <span className="font-semibold text-xs mb-2">Accessoires</span>
               <Image src="/accessoir.png" alt="Accessoires" width={48} height={48} className="w-12 h-12 object-contain" />

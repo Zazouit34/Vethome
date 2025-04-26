@@ -13,75 +13,75 @@ const categories = [
   { label: "Rongeur", value: "rodent" },
 ];
 
-const foods = [
+const accessories = [
   {
-    name: "Vitakraft",
-    price: "800DA",
-    image: "/vitakraft.png",
+    name: "Coussin",
+    price: "1500DA",
+    image: "/coussin.png",
     category: "dog",
     bg: "bg-yellow-50",
     border: "border-yellow-300",
   },
   {
-    name: "Edgard",
-    price: "3500DA",
-    image: "/edgard.png",
-    category: "dog",
+    name: "Bain oiseau",
+    price: "550DA",
+    image: "/bain-oiseau.png",
+    category: "bird",
     bg: "bg-green-50",
     border: "border-green-300",
   },
   {
-    name: "Goldfish",
-    price: "250DA",
-    image: "/goldfish.png",
-    category: "fish",
+    name: "Collier",
+    price: "800DA",
+    image: "/collier.png",
+    category: "dog",
     bg: "bg-orange-50",
     border: "border-orange-300",
   },
   {
-    name: "Milk-bone",
-    price: "850DA",
-    image: "/milk-bone.png",
-    category: "dog",
+    name: "Aquaqaf",
+    price: "300DA",
+    image: "/aqua.png",
+    category: "fish",
     bg: "bg-pink-50",
     border: "border-pink-300",
   },
   {
-    name: "Friskies",
-    price: "1200DA",
-    image: "/friskies.png",
+    name: "Jouet",
+    price: "640DA",
+    image: "/jouet.png",
     category: "cat",
     bg: "bg-blue-50",
     border: "border-blue-300",
   },
   {
-    name: "Canistar",
-    price: "2800DA",
-    image: "/canistar.png",
-    category: "dog",
+    name: "Tunnel",
+    price: "2500DA",
+    image: "/tunnel.png",
+    category: "cat",
     bg: "bg-purple-50",
     border: "border-purple-300",
   },
 ];
 
-export default function FoodPage() {
+export default function AccessoriesPage() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [cartCount, setCartCount] = useState(0);
   const [animateCart, setAnimateCart] = useState(false);
 
-  const filteredFoods = foods.filter(
-    (f) =>
-      (selectedCategory === "all" || f.category === selectedCategory) &&
-      (f.name.toLowerCase().includes(search.toLowerCase()) ||
-        f.price.toLowerCase().includes(search.toLowerCase()))
+  const filteredAccessories = accessories.filter(
+    (a) =>
+      (selectedCategory === "all" || a.category === selectedCategory) &&
+      (a.name.toLowerCase().includes(search.toLowerCase()) ||
+        a.price.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <div className="min-h-screen bg-white pb-8">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2">
-        <span className="font-bold text-lg text-gray-900">Nourriture</span>
+        <span className="font-bold text-lg text-gray-900">Accessoires</span>
         <div className="relative">
           <ShoppingCart className="w-6 h-6 text-gray-800" />
           {cartCount > 0 && (
@@ -121,23 +121,23 @@ export default function FoodPage() {
           ))}
         </div>
       </div>
-      {/* Food Grid */}
+      {/* Accessories Grid */}
       <div className="px-4 mt-4">
         <div className="grid grid-cols-2 gap-4">
-          {filteredFoods.map((food, idx) => (
+          {filteredAccessories.map((accessory, idx) => (
             <div
-              key={food.name}
-              className={`rounded-2xl p-3 flex flex-col items-center justify-between border shadow-sm relative ${food.bg} ${food.border}`}
+              key={accessory.name}
+              className={`rounded-2xl p-3 flex flex-col items-center justify-between border shadow-sm relative ${accessory.bg} ${accessory.border}`}
             >
               <Image
-                src={food.image}
-                alt={food.name}
+                src={accessory.image}
+                alt={accessory.name}
                 width={64}
                 height={64}
                 className="object-contain mb-2"
               />
-              <div className="font-semibold text-gray-800 text-sm text-center mb-1">{food.name}</div>
-              <div className="text-xs text-gray-500 mb-2">{food.price}</div>
+              <div className="font-semibold text-gray-800 text-sm text-center mb-1">{accessory.name}</div>
+              <div className="text-xs text-gray-500 mb-2">{accessory.price}</div>
               <button
                 className="absolute bottom-3 right-3 bg-rose-400 hover:bg-rose-500 text-white rounded-md p-2 shadow transition"
                 onClick={() => {
