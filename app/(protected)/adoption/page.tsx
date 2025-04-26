@@ -95,12 +95,12 @@ export default function AdoptionPage() {
                   alt={pet.name}
                   width={240}
                   height={180}
-                  className="rounded-t-2xl object-cover w-full h-40 shadow-md z-10"
+                  className="rounded-2xl object-cover w-full h-40 shadow-md z-10"
                   style={{ maxWidth: '100%', objectPosition: 'center' }}
                 />
                 <div className="absolute top-3 right-3 z-20">
                   <div className="bg-white/80 rounded-full p-1 shadow">
-                    <Star className="w-6 h-6 text-rose-400 fill-white" />
+                    <Star className="w-6 h-6 text-white fill-white" />
                   </div>
                 </div>
               </div>
