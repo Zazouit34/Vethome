@@ -25,7 +25,7 @@ export default function Component() {
             <SheetHeader>
               <SheetTitle className="text-white">Navigation Menu</SheetTitle>
             </SheetHeader>
-            <div className="grid gap-2 py-6">
+            <div className="grid gap-2 py-6 px-4">
               <Link
                 href="/main"
                 className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
@@ -66,7 +66,7 @@ export default function Component() {
               <div className="border-t border-gray-200 my-4" />
               {/* Profile link */}
               <Link
-                href="/use"
+                href="/user"
                 className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
                 prefetch={false}
                 onClick={() => setOpen(false)}
