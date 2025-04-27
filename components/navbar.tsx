@@ -19,20 +19,20 @@ export default function Component() {
           </SheetTrigger>
           <SheetContent side="top" className="w-full sm:w-[540px] mx-auto">
             <SheetHeader>
-              <SheetTitle>Navigation Menu</SheetTitle>
+              <SheetTitle className="text-white">Navigation Menu</SheetTitle>
             </SheetHeader>
             <div className="grid gap-2 py-6">
               <Link href="/main" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
-                Home
+                Accueil
               </Link>
-              <Link href="#" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
-                About
+              <Link href="/jobs" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
+                Annonces
               </Link>
-              <Link href="#" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
-                Services
+              <Link href="/veterinaries" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
+                Vétérinaires
               </Link>
-              <Link href="#" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
-                Contact
+              <Link href="/hosting" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
+                Hébergement
               </Link>
             </div>
           </SheetContent>
@@ -63,28 +63,28 @@ export default function Component() {
             className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
             prefetch={false}
           >
-            Home
+            Accueil
           </Link>
           <Link
-            href="#"
+            href="/jobs"
             className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
             prefetch={false}
           >
-            About
+            Annonces
           </Link>
           <Link
-            href="#"
+            href="/veterinaries"
             className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
             prefetch={false}
           >
-            Services
+            Vétérinaires
           </Link>
           <Link
-            href="#"
+            href="/hosting"
             className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
             prefetch={false}
           >
-            Contact
+            Hébergement
           </Link>
         </nav>
       </div>
