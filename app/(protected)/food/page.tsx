@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Search, ShoppingCart, Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const categories = [
   { label: "Tout", value: "all" },
@@ -69,6 +70,7 @@ export default function FoodPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [cartCount, setCartCount] = useState(0);
   const [animateCart, setAnimateCart] = useState(false);
+  const router = useRouter();
 
   const filteredFoods = foods.filter(
     (f) =>
@@ -82,7 +84,7 @@ export default function FoodPage() {
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2">
         <span className="font-bold text-lg text-gray-900">Nourriture</span>
-        <div className="relative">
+        <button className="relative" onClick={() => router.push('/cart')}>
           <ShoppingCart className="w-6 h-6 text-gray-800" />
           {cartCount > 0 && (
             <span
@@ -92,7 +94,7 @@ export default function FoodPage() {
               {cartCount}
             </span>
           )}
-        </div>
+        </button>
       </div>
       {/* Search Bar */}
       <div className="px-4 mt-2">

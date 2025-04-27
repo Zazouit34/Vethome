@@ -1,6 +1,7 @@
 'use client';
 
 import { CardsPaymentMethod } from "@/components/payment-method"
+import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
@@ -39,7 +40,7 @@ export default function PaymentPage() {
             <p className="text-muted-foreground text-center">
               Votre commande est confirmée. Vous recevrez très bientôt votre code ainsi que la facture par e-mail ou SMS.
             </p>
-            <img src="/paiment-sticker.png" alt="Paiement Sticker" className="w-24 h-24 mx-auto" />
+            <Image src="/payment.png" alt="Paiement Sticker" width={96} height={96} className="w-24 h-24 mx-auto" />
             <div className="text-lg font-bold text-center text-rose-400">Merci pour votre Achat</div>
             <Button 
               className="mt-4" 

@@ -78,6 +78,10 @@ export default function HousingPage() {
   const [animalType, setAnimalType] = useState('dog');
   const router = useRouter();
 
+  const handleReserve = () => {
+    router.push('/payment');
+  };
+
   return (
     <div className="min-h-screen bg-white py-8 px-2 md:px-8">
       <div className="flex items-center justify-center gap-3 mb-4">
@@ -162,7 +166,7 @@ export default function HousingPage() {
                   <div className="text-rose-400 text-xs mb-1">{g.subtitle}</div>
                   <div className="text-gray-600 text-sm mb-1">El mouradia distance depuis votre emplacement : {g.distance}</div>
                   <div className="font-semibold text-base mb-2">Tarif pour 1 nuit : {g.price} DZD</div>
-                  <button className="bg-rose-400 hover:bg-rose-500 text-white rounded-full px-8 py-2 text-lg font-semibold shadow-md transition w-fit">Reserver</button>
+                  <button className="bg-rose-400 hover:bg-rose-500 text-white rounded-full px-8 py-2 text-lg font-semibold shadow-md transition w-fit" onClick={handleReserve}>Reserver</button>
                 </div>
               </div>
             ))}

@@ -31,7 +31,7 @@ export default function VetProfilePage() {
         <button onClick={() => router.push('/user/profile')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Informations personnelles</button>
         <button onClick={() => router.push('/user/reservation')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Gérer mes rendez-vous</button>
         <button onClick={() => router.push('/user/animal')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Profil de mon animal</button>
-        <button onClick={() => router.push('/user/cart')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Mon panier</button>
+        <button onClick={() => router.push('/cart')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Mon panier</button>
       </div>
     </div>
   );
