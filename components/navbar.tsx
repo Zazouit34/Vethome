@@ -4,6 +4,7 @@ import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/co
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useState } from "react"
+import { User, LogOut, Home, Briefcase, Stethoscope, Hotel } from "lucide-react"
 
 
 export default function Component() {
@@ -25,17 +26,63 @@ export default function Component() {
               <SheetTitle className="text-white">Navigation Menu</SheetTitle>
             </SheetHeader>
             <div className="grid gap-2 py-6">
-              <Link href="/main" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
+              <Link
+                href="/main"
+                className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
+                prefetch={false}
+                onClick={() => setOpen(false)}
+              >
+                <Home className="w-5 h-5" />
                 Accueil
               </Link>
-              <Link href="/jobs" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
+              <Link
+                href="/jobs"
+                className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
+                prefetch={false}
+                onClick={() => setOpen(false)}
+              >
+                <Briefcase className="w-5 h-5" />
                 Annonces
               </Link>
-              <Link href="/veterinaries" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
+              <Link
+                href="/veterinaries"
+                className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
+                prefetch={false}
+                onClick={() => setOpen(false)}
+              >
+                <Stethoscope className="w-5 h-5" />
                 Vétérinaires
               </Link>
-              <Link href="/hosting" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
+              <Link
+                href="/hosting"
+                className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
+                prefetch={false}
+                onClick={() => setOpen(false)}
+              >
+                <Hotel className="w-5 h-5" />
                 Hébergement
+              </Link>
+              {/* Separator */}
+              <div className="border-t border-gray-200 my-4" />
+              {/* Profile link */}
+              <Link
+                href="/use"
+                className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
+                prefetch={false}
+                onClick={() => setOpen(false)}
+              >
+                <User className="w-5 h-5" />
+                Profil
+              </Link>
+              {/* Logout link */}
+              <Link
+                href="/"
+                className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
+                prefetch={false}
+                onClick={() => setOpen(false)}
+              >
+                <LogOut className="w-5 h-5" />
+                Déconnexion
               </Link>
             </div>
           </SheetContent>

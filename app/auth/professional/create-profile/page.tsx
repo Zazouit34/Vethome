@@ -20,6 +20,8 @@ import { DatePickerWithRange } from "@/components/Calendar";
 import { useRouter } from "next/navigation";
 import { FileText, FileImage } from "lucide-react";
 import { toast } from "sonner";
+import PopUpModal from "@/components/pop-up-modal";
+
 export default function CreateProfile() {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -27,6 +29,7 @@ export default function CreateProfile() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [startTime, setStartTime] = useState<string>("");
   const [endTime, setEndTime] = useState<string>("");
+  const [showPromo, setShowPromo] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -45,7 +48,11 @@ export default function CreateProfile() {
   };
 
   const handleComplete = () => {
-    toast.success("Profil créé avec succès")
+    toast.success("Profil créé avec succès");
+    setShowPromo(true);
+  };
+
+  const handlePromoClose = () => {
     router.push('/vet');
   };
 
@@ -213,6 +220,7 @@ export default function CreateProfile() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 p-6">
+      <PopUpModal open={showPromo} onClose={handlePromoClose} />
       <div className="max-w-2xl mx-auto space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight">
