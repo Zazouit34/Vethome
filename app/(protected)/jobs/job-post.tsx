@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Bell, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -64,14 +64,6 @@ export default function JobPost() {
 
   return (
     <div className="min-h-screen bg-white pb-8">
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 pt-6 pb-2">
-        <span className="font-bold text-xl text-gray-900">Stage</span>
-        <button className="relative">
-          <Bell className="w-6 h-6 text-gray-800" />
-          <span className="absolute top-0 right-0 w-2 h-2 bg-rose-400 rounded-full border-2 border-white"></span>
-        </button>
-      </div>
       {/* Welcome Section */}
       <div className="flex items-center gap-3 px-4 mt-2 mb-2">
         <Image
@@ -90,26 +82,23 @@ export default function JobPost() {
         <div className="font-bold text-lg text-gray-900 mb-1">Trouvez ou proposez un stage dans le domaine animalier !</div>
       </div>
       {/* Proposition de stage */}
-      <Card className="mx-4 mb-6">
-        <CardContent className="pt-6">
-          <label className="block font-medium text-gray-700 mb-1">Proposition de stage</label>
-          <Textarea
-            placeholder="Publiez votre proposition"
-            value={proposition}
-            onChange={e => setProposition(e.target.value)}
-            className="mb-2"
-          />
-          <div className="flex justify-end">
-            <Button 
-              onClick={handlePublish}
-              className="bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-lg px-5 py-2 transition"
-            >
-              <Send className="w-4 h-4 mr-2" />
-              Publier
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="mx-4 mb-6">
+        <Textarea
+          placeholder="Publiez votre proposition"
+          value={proposition}
+          onChange={e => setProposition(e.target.value)}
+          className="mb-2"
+        />
+        <div className="flex justify-end">
+          <Button 
+            onClick={handlePublish}
+            className="bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-lg px-5 py-2 transition"
+          >
+            <Send className="w-4 h-4 mr-2" />
+            Publier
+          </Button>
+        </div>
+      </div>
       {/* Annonces */}
       <div className="px-4">
         <div className="font-semibold text-lg text-gray-900 mb-3">Annonces</div>

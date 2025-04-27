@@ -17,11 +17,9 @@ export default function JobPage() {
           <TabsList className="grid w-[200px] grid-cols-2">
             <TabsTrigger value="posts" className="flex items-center gap-1">
               <Briefcase className="h-4 w-4" />
-              <span>Annonces</span>
             </TabsTrigger>
             <TabsTrigger value="chat" className="flex items-center gap-1">
               <MessageSquare className="h-4 w-4" />
-              <span>Messages</span>
             </TabsTrigger>
           </TabsList>
         </div>
