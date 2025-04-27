@@ -58,7 +58,7 @@ export default function CartPage() {
                 </div>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <button onClick={() => handleRemove(idx)} className="text-gray-400 text-xl"><X className="w-5 h-5" /></button>
+                <button className="text-gray-400 text-xl"><X className="w-5 h-5" /></button>
                 <div className="font-bold text-base text-gray-800 whitespace-nowrap">{item.price * item.quantity}DA</div>
               </div>
             </div>
