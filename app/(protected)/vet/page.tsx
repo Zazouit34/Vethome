@@ -30,6 +30,7 @@ export default function VetProfilePage() {
       <div className="flex flex-col gap-6 w-full max-w-xs md:max-w-md">
         <button onClick={() => router.push('/vet/profile')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Informations personnelles</button>
         <button onClick={() => router.push('/vet/reservation')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Gérer mes rendez-vous</button>
+        <button onClick={() => router.push('/subscription')} className="py-3 rounded-full bg-rose-400 text-white font-medium text-base shadow-md hover:bg-rose-500 transition">Passer Premium</button>
       </div>
     </div>
   );
