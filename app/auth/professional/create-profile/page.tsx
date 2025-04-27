@@ -19,7 +19,7 @@ import Image from "next/image";
 import { DatePickerWithRange } from "@/components/Calendar";
 import { useRouter } from "next/navigation";
 import { FileText, FileImage } from "lucide-react";
-
+import { toast } from "sonner";
 export default function CreateProfile() {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -45,6 +45,7 @@ export default function CreateProfile() {
   };
 
   const handleComplete = () => {
+    toast.success("Profil créé avec succès")
     router.push('/vet');
   };
 

@@ -34,7 +34,7 @@ export default function UserAuthMobile() {
           <div className="w-full max-w-xs">
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold tracking-tight text-white">
-                Bon Retour
+                Bienvenue
               </h2>
               <p className="text-sm text-gray-200 mt-2">
                 Connectez-vous à votre compte ou créez-en un nouveau

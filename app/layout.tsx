@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner"
+import MobileOnly from "@/components/MobileOnly";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,6 +22,7 @@ export default function RootLayout({
         <div className="page-transitions">
           {children}
         </div>
+        <Toaster />
       </body>
     </html>
   );

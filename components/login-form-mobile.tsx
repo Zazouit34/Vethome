@@ -9,6 +9,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export function LoginFormMobile({
   className,
@@ -18,6 +19,7 @@ export function LoginFormMobile({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    toast.success("Connexion réussie")
     router.push("/auth/professional/create-profile")
   }
 

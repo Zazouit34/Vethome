@@ -16,7 +16,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
+import { toast } from "sonner";
 export default function CreateUserProfile() {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -33,6 +33,7 @@ export default function CreateUserProfile() {
   };
 
   const handleComplete = () => {
+    toast.success("Profil créé avec succès")
     router.push('/user');
   };
 
