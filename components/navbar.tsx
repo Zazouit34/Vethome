@@ -3,14 +3,17 @@
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import Image from "next/image"
+import { useState } from "react"
+
 
 export default function Component() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 bg-white dark:bg-gray-950 shadow-sm sticky top-0 z-50">
       <div className="flex w-full items-center justify-between lg:justify-start">
         {/* Mobile Menu Button */}
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden">
               <MenuIcon className="h-6 w-6" />
@@ -22,16 +25,16 @@ export default function Component() {
               <SheetTitle className="text-white">Navigation Menu</SheetTitle>
             </SheetHeader>
             <div className="grid gap-2 py-6">
-              <Link href="/main" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link href="/main" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
                 Accueil
               </Link>
-              <Link href="/jobs" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link href="/jobs" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
                 Annonces
               </Link>
-              <Link href="/veterinaries" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link href="/veterinaries" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
                 Vétérinaires
               </Link>
-              <Link href="/hosting" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link href="/hosting" className="flex w-full items-center justify-center py-2 text-lg font-semibold" prefetch={false} onClick={() => setOpen(false)}>
                 Hébergement
               </Link>
             </div>
