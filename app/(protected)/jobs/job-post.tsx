@@ -50,7 +50,7 @@ export default function JobPost() {
     // Create a new announcement
     const newAnnouncement: Announcement = {
       id: Date.now().toString(),
-      name: "Samy Boudiaf",
+      name: "Particulier",
       image: "/review-image-1.jpg",
       description: proposition,
     };
@@ -68,13 +68,13 @@ export default function JobPost() {
       <div className="flex items-center gap-3 px-4 mt-2 mb-2">
         <Image
           src="/review-image-1.jpg"
-          alt="Samy Boudiaf"
+          alt="Particulier"
           width={96}
           height={96}
           className="rounded-full w-16 h-16 object-cover border-2 border-white shadow"
         />
         <div>
-          <div className="font-bold text-base text-rose-500">Bienvenue, Samy Boudiaf</div>
+          <div className="font-bold text-base text-rose-500">Bienvenue, Particulier</div>
           <div className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</div>
         </div>
       </div>

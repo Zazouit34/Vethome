@@ -12,6 +12,13 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 import GoogleMapsComponent from "@/components/GoogleMap";
 import { TimePicker } from "@/components/ui/time-picker";
@@ -33,7 +40,7 @@ const veterinaries = [
   },
   {
     id: 2,
-    name: "Dr. Samy Boudiaf",
+    name: "Dr. Particulier",
     image: "/veterinary-man.jpg",
     specialization: "Spécialiste en Chirurgie",
     rating: 4.9,
@@ -44,7 +51,7 @@ const veterinaries = [
   },
   {
     id: 3,
-    name: "Dr. Hafidha Merzouki",
+    name: "Dr. Professionnel",
     image: "/veterinary-woman.jpg",
     specialization: "Dermatologie",
     rating: 4.7,
@@ -88,6 +95,18 @@ const veterinaries = [
   }
 ];
 
+// Services vétérinaires avec leurs prix
+const vetServices = [
+  { id: "consultation", name: "Consultation Générale", price: 500 },
+  { id: "vaccination", name: "Vaccination", price: 800 },
+  { id: "surgery", name: "Chirurgie", price: 2000 },
+  { id: "dental", name: "Soins Dentaires", price: 700 },
+  { id: "grooming", name: "Toilettage", price: 400 },
+  { id: "emergency", name: "Urgence", price: 1000 },
+  { id: "laboratory", name: "Analyses de Laboratoire", price: 600 },
+  { id: "xray", name: "Radiographie", price: 900 },
+];
+
 export default function ProfileVet() {
   const searchParams = useSearchParams();
   const id = Number(searchParams.get('id'));
@@ -96,13 +115,15 @@ export default function ProfileVet() {
   // State for reservation
   const [date, setDate] = useState<Date | undefined>();
   const [time, setTime] = useState<string>("");
+  const [selectedService, setSelectedService] = useState<string>("");
+  const [servicePrice, setServicePrice] = useState<number>(0);
   
   // Trouver les données du vétérinaire en fonction de l'ID
   const selectedVet = veterinaries.find(vet => vet.id === id);
 
   // Données fictives - utilisant les données du vétérinaire sélectionné lorsque c'est applicable
   const profile = {
-    name: selectedVet?.name || "Dr. John Doe",
+    name: selectedVet?.name || "Dr. Particulier",
     specialization: selectedVet?.specialization || "Médecine Générale",
     experience: "5 ans",
     email: "john.doe@vet.com",
@@ -159,10 +180,20 @@ export default function ProfileVet() {
     return stars;
   };
 
+  const handleServiceChange = (value: string) => {
+    setSelectedService(value);
+    const service = vetServices.find(s => s.id === value);
+    if (service) {
+      setServicePrice(service.price);
+    } else {
+      setServicePrice(0);
+    }
+  };
+
   const handleReserve = () => {
-    if (date && time) {
+    if (date && time && selectedService) {
       // Log the reservation details
-      console.log('Réservation:', { date, time });
+      console.log('Réservation:', { date, time, service: selectedService, price: servicePrice });
       // Navigate to payment page
       router.push('/payment');
     }
@@ -303,17 +334,34 @@ export default function ProfileVet() {
                     <TimePicker value={time} onValueChange={setTime} />
                   </div>
                 </div>
+
+                {/* Service Selection Section */}
+                <div className="space-y-4">
+                  <Label className="text-lg">Sélectionner un Service</Label>
+                  <Select onValueChange={handleServiceChange} value={selectedService}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Choisissez un service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {vetServices.map((service) => (
+                        <SelectItem key={service.id} value={service.id}>
+                          {service.name} - {service.price} DZD
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
               
               <div className="mt-8 space-y-4">
                 <div className="text-lg font-semibold">
-                  Prix: {profile.consultationFee} DZD
+                  Prix: {servicePrice > 0 ? servicePrice : "Sélectionnez un service"} DZD
                 </div>
                 
                 <Button 
                   className="w-full" 
                   onClick={handleReserve}
-                  disabled={!date || !time}
+                  disabled={!date || !time || !selectedService}
                 >
                   Réserver un Rendez-vous
                 </Button>

@@ -15,7 +15,7 @@ const veterinaries = [
   },
   {
     id: 2,
-    name: 'Dr. Samy Boudiaf',
+    name: 'Dr. Particulier',
     image: '/veterinary-man.jpg',
     specialization: 'Generalist',
     rating: 4.0,
@@ -24,7 +24,7 @@ const veterinaries = [
   },
   {
     id: 3,
-    name: 'Dr. Hafidha Merzouki',
+    name: 'Dr. Professionnel',
     image: '/veterinary-woman.jpg',
     specialization: 'Surgery',
     rating: 3.6,

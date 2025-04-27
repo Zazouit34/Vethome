@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import { Bell } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+
 
 const user = {
-  name: 'Samy Boudiaf',
+  name: 'Particulier',
   image: '/review-image-1.jpg',
 };
 
@@ -23,7 +25,28 @@ const services = [
   },
 ];
 
+// Liste des vétérinaires disponibles (IDs correspondant à ceux dans profile-vet-reservation.tsx)
+const availableVets = [1, 2, 3, 4, 5, 6];
+
 export default function CleaningPage() {
+  const router = useRouter();
+
+  const handleServiceClick = (serviceTitle: string) => {
+    // Sélectionner un vétérinaire aléatoire
+    const randomVetId = availableVets[Math.floor(Math.random() * availableVets.length)];
+    
+    // Rediriger vers la page de profil du vétérinaire
+    router.push(`/profile/profile-vet-reservation?id=${randomVetId}`);
+  };
+
+  const handleFindVet = () => {
+    // Sélectionner un vétérinaire aléatoire
+    const randomVetId = availableVets[Math.floor(Math.random() * availableVets.length)];
+    
+    // Rediriger vers la page de profil du vétérinaire
+    router.push(`/profile/profile-vet-reservation?id=${randomVetId}`);
+  };
+
   return (
     <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
       {/* Header */}
@@ -43,7 +66,11 @@ export default function CleaningPage() {
       <div className="px-4 md:max-w-6xl md:mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, idx) => (
-            <div key={idx} className="relative rounded-2xl overflow-hidden shadow-lg h-48 md:h-56 flex items-end group cursor-pointer">
+            <div 
+              key={idx} 
+              className="relative rounded-2xl overflow-hidden shadow-lg h-48 md:h-56 flex items-end group cursor-pointer"
+              onClick={() => handleServiceClick(service.title)}
+            >
               <Image src={service.image} alt={service.title} fill className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
                 <span className="text-white text-xl md:text-2xl font-bold drop-shadow-lg">{service.title}</span>

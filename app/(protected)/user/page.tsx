@@ -16,7 +16,7 @@ export default function VetProfilePage() {
       <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4">
         <Image
           src="/review-image-1.jpg"
-          alt="Samy Boudiaf"
+          alt="Particulier"
           width={224}
           height={224}
           className="object-cover w-full h-full"
@@ -24,7 +24,7 @@ export default function VetProfilePage() {
       </div>
 
       {/* Name */}
-      <div className="text-xl md:text-2xl font-semibold text-center mb-10">Samy Boudiaf</div>
+      <div className="text-xl md:text-2xl font-semibold text-center mb-10">Particulier</div>
 
       {/* Buttons */}
       <div className="flex flex-col gap-6 w-full max-w-xs md:max-w-md">

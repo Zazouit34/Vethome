@@ -17,7 +17,7 @@ const veterinaries = [
   },
   {
     id: 2,
-    name: "Dr. Samy Boudiaf",
+    name: "Dr. Particulier",
     image: "/veterinary-man.jpg",
     specialization: "Docteur vétérinaire",
     rating: 4.0,
@@ -25,7 +25,7 @@ const veterinaries = [
   },
   {
     id: 3,
-    name: "Dr. Hafidha Merzouki",
+    name: "Dr. Professionnel",
     image: "/veterinary-woman.jpg",
     specialization: "Docteur vétérinaire",
     rating: 3.6,
@@ -72,13 +72,13 @@ export default function MainPage() {
         <div className="flex items-center gap-3">
           <Image
             src="/review-image-1.jpg"
-            alt="Samy Boudiaf"
+            alt="Particulier"
             width={96}
             height={96}
             className="rounded-full w-12 h-12 md:w-24 md:h-24 object-cover border-2 border-white shadow"
           />
           <div className="flex flex-col">
-            <span className="font-bold text-base md:text-lg text-rose-500">Bienvenue, Samy Boudiaf</span>
+            <span className="font-bold text-base md:text-lg text-rose-500">Bienvenue, Particulier</span>
             <span className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</span>
           </div>
         </div>

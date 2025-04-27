@@ -142,7 +142,7 @@ export default function JobChat() {
             </div>
             {message.sender === "user" && (
               <Avatar className="h-8 w-8 ml-2">
-                <AvatarImage src="/review-image-1.jpg" alt="Samy Boudiaf" />
+                <AvatarImage src="/review-image-1.jpg" alt="Particulier" />
                 <AvatarFallback>SB</AvatarFallback>
               </Avatar>
             )}

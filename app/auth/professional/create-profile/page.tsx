@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { DatePickerWithRange } from "@/components/Calendar";
 import { useRouter } from "next/navigation";
-import { FileText, FileImage } from "lucide-react";
+import { FileText, FileImage, User } from "lucide-react";
 import { toast } from "sonner";
 import PopUpModal from "@/components/pop-up-modal";
 
@@ -27,6 +27,8 @@ export default function CreateProfile() {
   const [step, setStep] = useState(1);
   const [certificate, setCertificate] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [profileImage, setProfileImage] = useState<File | null>(null);
+  const [profilePreviewUrl, setProfilePreviewUrl] = useState<string | null>(null);
   const [startTime, setStartTime] = useState<string>("");
   const [endTime, setEndTime] = useState<string>("");
   const [showPromo, setShowPromo] = useState(false);
@@ -47,6 +49,15 @@ export default function CreateProfile() {
     }
   };
 
+  const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setProfileImage(file);
+      const url = URL.createObjectURL(file);
+      setProfilePreviewUrl(url);
+    }
+  };
+
   const handleComplete = () => {
     toast.success("Profil créé avec succès");
     setShowPromo(true);
@@ -61,6 +72,44 @@ export default function CreateProfile() {
       case 1:
         return (
           <div className="space-y-6">
+            <div className="space-y-2">
+              <Label>Photo de Profil</Label>
+              <div className="border-2 border-dashed rounded-lg p-4 text-center">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleProfileImageChange}
+                  className="hidden"
+                  id="profileImage"
+                />
+                <Label
+                  htmlFor="profileImage"
+                  className="cursor-pointer block p-4 text-center"
+                >
+                  {profilePreviewUrl ? (
+                    <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden">
+                      <Image
+                        src={profilePreviewUrl}
+                        alt="Photo de profil"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center p-4">
+                      <User className="h-12 w-12 text-primary mb-2" />
+                      <span className="text-muted-foreground">
+                        Cliquez pour télécharger votre photo de profil
+                        <br />
+                        <span className="text-sm">
+                          (JPG, PNG acceptés)
+                        </span>
+                      </span>
+                    </div>
+                  )}
+                </Label>
+              </div>
+            </div>
             <div className="space-y-2">
               <Label htmlFor="fullName">Nom Complet</Label>
               <Input id="fullName" placeholder="Dr. Jean Dupont" />
