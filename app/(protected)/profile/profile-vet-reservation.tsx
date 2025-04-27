@@ -19,11 +19,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { DatePicker } from "@/components/Calendar-nopopover";
 
 import GoogleMapsComponent from "@/components/GoogleMap";
 import { TimePicker } from "@/components/ui/time-picker";
-import { Label } from "@/components/ui/label";
-import { DatePicker } from "@/components/Calendar-nopopover";
 
 // Données fictives pour les vétérinaires (identiques à celles de la page des vétérinaires)
 const veterinaries = [
@@ -117,6 +118,7 @@ export default function ProfileVet() {
   const [time, setTime] = useState<string>("");
   const [selectedService, setSelectedService] = useState<string>("");
   const [servicePrice, setServicePrice] = useState<number>(0);
+  const [locationType, setLocationType] = useState<string>("clinique");
   
   // Trouver les données du vétérinaire en fonction de l'ID
   const selectedVet = veterinaries.find(vet => vet.id === id);
@@ -351,11 +353,33 @@ export default function ProfileVet() {
                     </SelectContent>
                   </Select>
                 </div>
+
+                {/* Location Type Selection */}
+                <div className="space-y-4">
+                  <Label className="text-lg">Lieu de Consultation</Label>
+                  <RadioGroup 
+                    defaultValue="clinique" 
+                    onValueChange={setLocationType}
+                    className="flex flex-col space-y-2"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="clinique" id="clinique" />
+                      <Label htmlFor="clinique" className="font-normal">Clinique</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="domicile" id="domicile" />
+                      <Label htmlFor="domicile" className="font-normal">Domicile</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
               </div>
               
               <div className="mt-8 space-y-4">
                 <div className="text-lg font-semibold">
                   Prix: {servicePrice > 0 ? servicePrice : "Sélectionnez un service"} DZD
+                  {locationType === "domicile" && servicePrice > 0 && (
+                    <span className="text-rose-500 ml-2">+ Frais de déplacement</span>
+                  )}
                 </div>
                 
                 <Button 

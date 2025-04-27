@@ -1,37 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { MessageSquare, Newspaper } from "lucide-react";
 import JobPost from "./job-post";
 import JobChat from "./job-chat";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MessageSquare, Briefcase } from "lucide-react";
+import { TabProvider, useTab } from "./tab-context";
 
-export default function JobPage() {
-  const [activeTab, setActiveTab] = useState("posts");
+function JobsContent() {
+  const { activeTab, setActiveTab } = useTab();
 
   return (
-    <div className="min-h-screen bg-white">
-      <Tabs defaultValue="posts" className="w-full" onValueChange={setActiveTab}>
-        <div className="flex items-center justify-between px-4 pt-6 pb-2">
-          <span className="font-bold text-xl text-gray-900">Stage</span>
-          <TabsList className="grid w-[200px] grid-cols-2">
-            <TabsTrigger value="posts" className="flex items-center gap-1">
-              <Briefcase className="h-4 w-4" />
-            </TabsTrigger>
-            <TabsTrigger value="chat" className="flex items-center gap-1">
-              <MessageSquare className="h-4 w-4" />
-            </TabsTrigger>
-          </TabsList>
-        </div>
-        
-        <TabsContent value="posts" className="mt-0">
+    <div className="container mx-auto p-4">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="posts" className="flex items-center gap-2">
+            <Newspaper className="h-4 w-4" />
+            Annonces
+          </TabsTrigger>
+          <TabsTrigger value="chat" className="flex items-center gap-2">
+            <MessageSquare className="h-4 w-4" />
+            Chat
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="posts">
           <JobPost />
         </TabsContent>
-        
-        <TabsContent value="chat" className="mt-0">
+        <TabsContent value="chat">
           <JobChat />
         </TabsContent>
       </Tabs>
     </div>
+  );
+}
+
+export default function JobsPage() {
+  return (
+    <TabProvider>
+      <JobsContent />
+    </TabProvider>
   );
 }

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTab } from "./tab-context";
 
 // Define the type for an announcement
 type Announcement = {
@@ -41,6 +42,7 @@ const initialAnnonces: Announcement[] = [
 ];
 
 export default function JobPost() {
+  const { setActiveTab } = useTab();
   const [proposition, setProposition] = useState("");
   const [annonces, setAnnonces] = useState<Announcement[]>(initialAnnonces);
 
@@ -60,6 +62,11 @@ export default function JobPost() {
     
     // Clear the textarea
     setProposition("");
+  };
+
+  const handleContact = (postId: string) => {
+    // Switch to the chat tab using the context
+    setActiveTab("chat");
   };
 
   return (
@@ -116,7 +123,7 @@ export default function JobPost() {
                 <div className="flex-1">
                   <div className="font-bold text-base text-gray-900 mb-1">{a.name}</div>
                   <div className="text-sm text-gray-600 mb-2 line-clamp-4">{a.description}</div>
-                  <Button className="bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-full px-5 py-1 text-sm transition">
+                  <Button className="bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-full px-5 py-1 text-sm transition" onClick={() => handleContact(a.id)}>
                     Contacter
                   </Button>
                 </div>
