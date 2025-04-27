@@ -119,15 +119,6 @@ export default function CreateUserProfile() {
                 className="min-h-[100px]"
               />
             </div>
-            <div className="pt-4">
-              <Button 
-                variant="outline" 
-                className="w-full text-muted-foreground"
-                onClick={handleSkipPetSteps}
-              >
-                Ignorer 
-              </Button>
-            </div>
           </div>
         );
 
@@ -174,6 +165,15 @@ export default function CreateUserProfile() {
                   </SelectContent>
                 </Select>
               </div>
+            </div>
+            <div className="pt-4">
+              <Button 
+                variant="outline" 
+                className="w-full text-muted-foreground"
+                onClick={handleSkipPetSteps}
+              >
+                Ignorer 
+              </Button>
             </div>
           </div>
         );
