@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Check, X } from 'lucide-react';
 
 const days = [
   { day: 'Dim', date: 11 },
@@ -47,8 +47,25 @@ export default function VetReservation() {
           </div>
           {/* Appointments Column */}
           <div className="flex-1 flex flex-col gap-4 pl-4 pt-2">
-            <div className="rounded-2xl border border-gray-300 shadow-md p-4 bg-white max-w-xs md:max-w-md">
+            {/* Existing Confirmed Appointment */}
+            <div className="rounded-2xl border border-gray-300 shadow-md p-4 bg-white max-w-xs md:max-w-md relative">
               <div className="font-medium text-gray-800">Déplacement à draria<br />réservation : 45D12</div>
+              <div className="absolute top-2 right-2 bg-green-100 p-1 rounded-full">
+                <Check className="w-5 h-5 text-green-600" />
+              </div>
+            </div>
+            
+            {/* New Pending Appointment */}
+            <div className="rounded-2xl border border-gray-300 shadow-md p-4 bg-white max-w-xs md:max-w-md">
+              <div className="font-medium text-gray-800">Consultation générale<br />réservation : 78E34</div>
+              <div className="flex justify-end gap-2 mt-3">
+                <button className="bg-red-100 p-2 rounded-full hover:bg-red-200 transition-colors">
+                  <X className="w-5 h-5 text-red-600" />
+                </button>
+                <button className="bg-green-100 p-2 rounded-full hover:bg-green-200 transition-colors">
+                  <Check className="w-5 h-5 text-green-600" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

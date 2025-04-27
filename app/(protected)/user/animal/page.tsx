@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Plus } from 'lucide-react';
 
 export default function AnimalProfile() {
   const router = useRouter();
@@ -26,6 +26,11 @@ export default function AnimalProfile() {
       { date: '03/09/2023', description: 'Traitement antiparasitaire' },
       { date: '23/01/2024', description: 'Vaccination annuelle' }
     ]
+  };
+
+  const handleAddAnotherPet = () => {
+    // Navigate to the pet creation page
+    router.push('/auth/user/create-profile');
   };
 
   return (
@@ -113,6 +118,18 @@ export default function AnimalProfile() {
             onClick={() => router.push('/main')}
           >
             Prendre un rendez-vous
+          </Button>
+        </div>
+        
+        {/* Add Another Pet Button */}
+        <div className="mt-8 text-center">
+          <Button 
+            variant="outline" 
+            className="py-3 rounded-full border-2 border-rose-400 text-rose-400 font-medium text-base hover:bg-rose-50 transition flex items-center gap-2 mx-auto"
+            onClick={handleAddAnotherPet}
+          >
+            <Plus className="w-5 h-5" />
+            Ajouter un autre animal
           </Button>
         </div>
       </div>

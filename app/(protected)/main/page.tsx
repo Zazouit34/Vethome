@@ -49,11 +49,7 @@ const services = [
     image: "/garderie.png",
     link: "/hosting",
   },
-  {
-    name: "Autre",
-    image: "/pet-image.png",
-    link: "/autre",
-  },
+ 
 ];
 
 export default function MainPage() {

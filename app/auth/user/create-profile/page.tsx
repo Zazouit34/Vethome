@@ -50,6 +50,12 @@ export default function CreateUserProfile() {
     router.push('/user');
   };
 
+  const handleSkipPetSteps = () => {
+    // Skip directly to completion
+    toast.success("Profil créé avec succès")
+    router.push('/user');
+  };
+
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -112,6 +118,15 @@ export default function CreateUserProfile() {
                 placeholder="Entrez votre adresse complète"
                 className="min-h-[100px]"
               />
+            </div>
+            <div className="pt-4">
+              <Button 
+                variant="outline" 
+                className="w-full text-muted-foreground"
+                onClick={handleSkipPetSteps}
+              >
+                Ignorer 
+              </Button>
             </div>
           </div>
         );
