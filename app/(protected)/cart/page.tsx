@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Plus, Minus, X } from "lucide-react";
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 const initialCartItems = [
   {
     name: "Croquettes",
@@ -23,7 +23,7 @@ const initialCartItems = [
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState(initialCartItems);
-
+  const router = useRouter();
   const handleQuantity = (idx: number, delta: number) => {
     setCartItems(items => items.map((item, i) =>
       i === idx ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
@@ -67,7 +67,7 @@ export default function CartPage() {
         ))}
       </div>
       <div className="fixed bottom-0 left-0 right-0 bg-white py-4 px-4 border-t flex justify-center">
-        <button className="relative w-full max-w-md bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-full py-3 text-lg transition flex items-center justify-center">
+        <button onClick={() => router.push("/payment")} className="relative w-full max-w-md bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-full py-3 text-lg transition flex items-center justify-center">
           Payer
           <span className="absolute right-4 bg-white text-rose-400 rounded-full px-4 py-1 text-sm font-bold ml-2" style={{ minWidth: 60 }}>
             {total}DA

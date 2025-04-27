@@ -84,7 +84,7 @@ export default function VeterinariesPage() {
               </div>
             </div>
             <Link href={`/profile?id=${vet.id}`} className="self-end mt-auto">
-              <button className="bg-rose-400 hover:bg-rose-500 text-white rounded-full px-8 py-2 text-lg font-semibold shadow-md transition">Détaille</button>
+              <button className="bg-rose-400 hover:bg-rose-500 text-white rounded-full px-8 py-2 text-lg font-semibold shadow-md transition">Détails</button>
             </Link>
           </div>
         ))}

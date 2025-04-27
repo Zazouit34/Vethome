@@ -18,19 +18,24 @@ export default function PaymentPage() {
     setIsSuccess(true)
   }
 
+  const handleContinue = (selected: string) => {
+    if (selected === "cash") {
+      setShowModal(false)
+      setIsSuccess(true)
+    } else {
+      setMethod(selected)
+      setShowModal(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 p-6">
       <div className="max-w-md mx-auto flex items-center justify-center min-h-[calc(100vh-3rem)]">
         {showModal ? (
-          <PaymentMethodModal
-            onContinue={(selected) => {
-              setMethod(selected)
-              setShowModal(false)
-            }}
-          />
+          <PaymentMethodModal onContinue={handleContinue} />
         ) : !isSuccess ? (
           <div className="space-y-6">
-            <CardsPaymentMethod onSuccess={handlePaymentSuccess} />
+            {method === "cib" && <CardsPaymentMethod onSuccess={handlePaymentSuccess} />}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center space-y-6 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full h-full min-h-[50vh] my-auto">
