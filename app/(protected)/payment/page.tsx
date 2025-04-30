@@ -2,13 +2,12 @@
 
 import { CardsPaymentMethod } from "@/components/payment-method"
 import Image from "next/image"
-
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import PaymentMethodModal from "@/components/payment-method-modal"
 
-export default function PaymentPage() {
+function PaymentContent() {
   const [isSuccess, setIsSuccess] = useState(false)
   const [showModal, setShowModal] = useState(true)
   const [method, setMethod] = useState<string | null>(null)
@@ -59,5 +58,13 @@ export default function PaymentPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function PaymentPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PaymentContent />
+    </Suspense>
   )
 }
