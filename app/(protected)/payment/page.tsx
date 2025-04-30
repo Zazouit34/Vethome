@@ -5,7 +5,7 @@ import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import PaymentMethodModal from "@/components/payment-method-modal"
 
 export default function PaymentPage() {
@@ -13,6 +13,8 @@ export default function PaymentPage() {
   const [showModal, setShowModal] = useState(true)
   const [method, setMethod] = useState<string | null>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const isSubscription = searchParams.get('type') === 'subscription'
 
   const handlePaymentSuccess = () => {
     setIsSuccess(true)
@@ -32,7 +34,7 @@ export default function PaymentPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 p-6">
       <div className="max-w-md mx-auto flex items-center justify-center min-h-[calc(100vh-3rem)]">
         {showModal ? (
-          <PaymentMethodModal onContinue={handleContinue} />
+          <PaymentMethodModal onContinue={handleContinue} showCash={!isSubscription} />
         ) : !isSuccess ? (
           <div className="space-y-6">
             {method === "cib" && <CardsPaymentMethod onSuccess={handlePaymentSuccess} />}

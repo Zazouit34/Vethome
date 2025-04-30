@@ -41,8 +41,8 @@ export default function SubscriptionPage() {
   const router = useRouter();
 
   const handleSelectPlan = () => {
-    // Simply redirect to the payment page
-    router.push("/payment");
+    // Redirect to payment page with subscription type
+    router.push("/payment?type=subscription");
   };
 
   return (

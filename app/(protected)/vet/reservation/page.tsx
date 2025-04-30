@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Check, X } from 'lucide-react';
+import { useState } from 'react';
 
 const days = [
   { day: 'Dim', date: 11 },
@@ -15,6 +16,8 @@ const days = [
 
 export default function VetReservation() {
   const router = useRouter();
+  const [showPendingAppointment, setShowPendingAppointment] = useState(true);
+
   return (
     <div className="min-h-screen flex flex-col bg-white relative pb-24 md:pb-0">
       {/* Back Button */}
@@ -56,17 +59,22 @@ export default function VetReservation() {
             </div>
             
             {/* New Pending Appointment */}
-            <div className="rounded-2xl border border-gray-300 shadow-md p-4 bg-white max-w-xs md:max-w-md">
-              <div className="font-medium text-gray-800">Consultation générale<br />réservation : 78E34</div>
-              <div className="flex justify-end gap-2 mt-3">
-                <button className="bg-red-100 p-2 rounded-full hover:bg-red-200 transition-colors">
-                  <X className="w-5 h-5 text-red-600" />
-                </button>
-                <button className="bg-green-100 p-2 rounded-full hover:bg-green-200 transition-colors">
-                  <Check className="w-5 h-5 text-green-600" />
-                </button>
+            {showPendingAppointment && (
+              <div className="rounded-2xl border border-gray-300 shadow-md p-4 bg-white max-w-xs md:max-w-md">
+                <div className="font-medium text-gray-800">Consultation générale<br />réservation : 78E34</div>
+                <div className="flex justify-end gap-2 mt-3">
+                  <button 
+                    onClick={() => setShowPendingAppointment(false)}
+                    className="bg-red-100 p-2 rounded-full hover:bg-red-200 transition-colors"
+                  >
+                    <X className="w-5 h-5 text-red-600" />
+                  </button>
+                  <button className="bg-green-100 p-2 rounded-full hover:bg-green-200 transition-colors">
+                    <Check className="w-5 h-5 text-green-600" />
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

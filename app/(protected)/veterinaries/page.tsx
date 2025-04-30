@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const veterinaries = [
   {
@@ -52,9 +54,16 @@ function PawRating({ rating }: { rating: number }) {
 }
 
 export default function VeterinariesPage() {
+  const router = useRouter();
+  
   return (
     <div className="min-h-screen bg-white py-8 px-2 md:px-8">
-      <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-8 text-center">Vétérinaires</h1>
+      <div className="flex items-center justify-center mb-8 relative">
+        <button onClick={() => router.back()} className="absolute left-4 md:left-10">
+          <ArrowLeft className="w-6 h-6" />
+        </button>
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-800">Vétérinaires</h1>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {veterinaries.map((vet, idx) => (
           <div

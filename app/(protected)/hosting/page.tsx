@@ -84,11 +84,11 @@ export default function HousingPage() {
 
   return (
     <div className="min-h-screen bg-white py-8 px-2 md:px-8">
-      <div className="flex items-center justify-center gap-3 mb-4">
-        <button onClick={() => router.back()} className="text-gray-700 hover:text-rose-400 transition p-1">
+      <div className="flex items-center justify-center mb-4 relative">
+        <button onClick={() => router.back()} className="absolute left-4 md:left-10">
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-2xl md:text-4xl font-bold text-gray-800 text-center">Garderies</h1>
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-800">Garderies</h1>
       </div>
       {!stepDone ? (
         <div className="max-w-md mx-auto flex flex-col gap-6 bg-white p-6 rounded-2xl shadow mb-8">

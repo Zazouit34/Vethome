@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Plus, Minus, X } from "lucide-react";
+import { Plus, Minus, X, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 const initialCartItems = [
@@ -38,7 +38,14 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="text-center font-semibold text-lg py-4 border-b">Panier</div>
+      <div className="relative border-b py-4">
+        <div className="flex items-center justify-center">
+          <button onClick={() => router.back()} className="absolute left-4 text-2xl">
+            <ArrowLeft className="w-6 h-6" />
+          </button>
+          <div className="font-semibold text-lg">Panier</div>
+        </div>
+      </div>
       <div className="flex-1 px-4 py-4">
         {cartItems.map((item, idx) => (
           <div key={item.name}>

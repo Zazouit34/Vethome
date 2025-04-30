@@ -2,7 +2,13 @@ import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 
-export default function PaymentMethodModal({ onContinue }: { onContinue: (method: string) => void }) {
+export default function PaymentMethodModal({ 
+  onContinue,
+  showCash = true 
+}: { 
+  onContinue: (method: string) => void;
+  showCash?: boolean;
+}) {
   const [selected, setSelected] = useState<string>("");
 
   return (
@@ -20,10 +26,12 @@ export default function PaymentMethodModal({ onContinue }: { onContinue: (method
           onValueChange={setSelected}
           className="flex flex-col gap-4 mb-8"
         >
-          <Label className="flex items-center gap-3 font-normal">
-            <RadioGroupItem value="cash" />
-            Paiement par cash
-          </Label>
+          {showCash && (
+            <Label className="flex items-center gap-3 font-normal">
+              <RadioGroupItem value="cash" />
+              Paiement par cash
+            </Label>
+          )}
           <Label className="flex items-center gap-3 font-normal">
             <RadioGroupItem value="cib" />
             Carte CIB
