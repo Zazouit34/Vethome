@@ -74,7 +74,7 @@ export default function MainPage() {
             className="rounded-full w-12 h-12 md:w-24 md:h-24 object-cover border-2 border-white shadow"
           />
           <div className="flex flex-col">
-            <span className="font-bold text-base md:text-lg text-rose-500">Bienvenue, Particulier</span>
+            <span className="font-bold text-base md:text-lg text-rose-500">Bienvenue, #Utilisateur</span>
             <span className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</span>
           </div>
         </div>
