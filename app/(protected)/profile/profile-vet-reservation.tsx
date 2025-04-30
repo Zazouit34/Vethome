@@ -377,9 +377,6 @@ export default function ProfileVet() {
               <div className="mt-8 space-y-4">
                 <div className="text-lg font-semibold">
                   Prix: {servicePrice > 0 ? servicePrice : "Sélectionnez un service"} DZD
-                  {locationType === "domicile" && servicePrice > 0 && (
-                    <span className="text-rose-500 ml-2">+ Frais de déplacement</span>
-                  )}
                 </div>
                 
                 <Button 
