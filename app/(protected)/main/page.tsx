@@ -65,7 +65,7 @@ export default function MainPage() {
     <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-6xl md:mx-auto">
-        <div className="flex items-center gap-3">
+        <Link href="/profile" className="flex items-center gap-3">
           <Image
             src="/review-image-1.jpg"
             alt="Particulier"
@@ -77,7 +77,7 @@ export default function MainPage() {
             <span className="font-bold text-base md:text-lg text-rose-500">Bienvenue, #Utilisateur</span>
             <span className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</span>
           </div>
-        </div>
+        </Link>
         <button className="relative">
           <Bell className="w-6 h-6 text-gray-800" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-rose-400 rounded-full border-2 border-white"></span>

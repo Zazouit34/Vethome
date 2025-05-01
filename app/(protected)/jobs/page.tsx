@@ -13,7 +13,7 @@ function JobsContent() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex items-center justify-center mb-8 relative">
+        <div className="flex items-center justify-center mb-8 relative">
         <button onClick={() => router.back()} className="absolute left-4 md:left-10">
           <ArrowLeft className="w-6 h-6" />
         </button>
