@@ -65,7 +65,7 @@ export default function MainPage() {
     <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-6xl md:mx-auto">
-        <Link href="/profile" className="flex items-center gap-3">
+        <Link href="/user" className="flex items-center gap-3">
           <Image
             src="/review-image-1.jpg"
             alt="Particulier"
