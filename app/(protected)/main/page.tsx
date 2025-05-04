@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, Bell } from "lucide-react";
-import { auth } from '@/lib/firebase';
+import { auth, db } from '@/lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 // Données fictives pour les vétérinaires
 const veterinaries = [
@@ -56,13 +57,40 @@ const services = [
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [userName, setUserName] = useState<string | null>(null);
+  const [profileImage, setProfileImage] = useState<string>("/review-image-1.jpg");
+  const [profileHref, setProfileHref] = useState<string>("/user");
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
+        // Try to fetch from professionals
+        const profRef = doc(db, 'professionals', user.uid);
+        const profSnap = await getDoc(profRef);
+        if (profSnap.exists()) {
+          const data = profSnap.data();
+          setUserName(data.name || user.displayName || user.email || 'Utilisateur');
+          setProfileImage('/veterinary-woman.jpg');
+          setProfileHref('/vet');
+          return;
+        }
+        // Try to fetch from users
+        const userRef = doc(db, 'users', user.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          const data = userSnap.data();
+          setUserName(data.name || user.displayName || user.email || 'Utilisateur');
+          setProfileImage('/review-image-1.jpg');
+          setProfileHref('/user');
+          return;
+        }
+        // Fallback
         setUserName(user.displayName || user.email || 'Utilisateur');
+        setProfileImage('/review-image-1.jpg');
+        setProfileHref('/user');
       } else {
         setUserName(null);
+        setProfileImage('/review-image-1.jpg');
+        setProfileHref('/user');
       }
     });
     return () => unsubscribe();
@@ -78,10 +106,10 @@ export default function MainPage() {
     <div className="min-h-screen bg-white md:bg-gradient-to-b md:from-white md:to-gray-100">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-6 pb-2 md:max-w-6xl md:mx-auto">
-        <Link href="/user" className="flex items-center gap-3">
+        <Link href={profileHref} className="flex items-center gap-3">
           <Image
-            src="/review-image-1.jpg"
-            alt="Particulier"
+            src={profileImage}
+            alt="Profil"
             width={96}
             height={96}
             className="rounded-full w-12 h-12 md:w-24 md:h-24 object-cover border-2 border-white shadow"
