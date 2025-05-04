@@ -1,12 +1,31 @@
 'use client'
 
-
 import Image from 'next/image';
-import { Icons } from '@/components/icons';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { auth, db } from '@/lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 export default function VetProfilePage() {
   const router = useRouter();
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const profRef = doc(db, 'professionals', user.uid);
+        const profSnap = await getDoc(profRef);
+        if (profSnap.exists()) {
+          const data = profSnap.data();
+          setName(data.name || user.displayName || user.email || 'Professionnel');
+        } else {
+          setName(user.displayName || user.email || 'Professionnel');
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-white relative pb-24 md:pb-0">
       {/* Header */}
@@ -16,7 +35,7 @@ export default function VetProfilePage() {
       <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4">
         <Image
           src="/veterinary-woman.jpg"
-          alt="Dr. Professionnel"
+          alt={name}
           width={224}
           height={224}
           className="object-cover w-full h-full"
@@ -24,7 +43,7 @@ export default function VetProfilePage() {
       </div>
 
       {/* Name */}
-      <div className="text-xl md:text-2xl font-semibold text-center mb-10">Dr. Professionnel</div>
+      <div className="text-xl md:text-2xl font-semibold text-center mb-10">{name}</div>
 
       {/* Buttons */}
       <div className="flex flex-col gap-6 w-full max-w-xs md:max-w-md">

@@ -10,18 +10,40 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { auth, db } from '@/lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { useState } from "react";
 
 export function LoginFormMobile({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
   const router = useRouter()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    toast.success("Connexion réussie")
-    router.push("/auth/user/create-profile")
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      // Check if user is in users collection
+      const userRef = doc(db, 'users', user.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        toast.success('Connexion réussie');
+        router.push('/auth/user/create-profile');
+      } else {
+        await signOut(auth);
+        setError("Ce compte n'est pas un utilisateur particulier.");
+      }
+    } catch (err: any) {
+      setError(err.message);
+    }
+  };
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -37,6 +59,8 @@ export function LoginFormMobile({
                   placeholder="m@example.com"
                   required
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
@@ -54,6 +78,8 @@ export function LoginFormMobile({
                   type="password" 
                   required 
                   className="bg-white/10 border-white/20 text-white"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
               </div>
               <Button type="submit" className="w-full border-white/20 hover:bg-white/10">
@@ -63,6 +89,7 @@ export function LoginFormMobile({
                 Connexion avec Google
               </Button>
             </div>
+            {error && <div className="mt-4 text-center text-sm text-red-400">{error}</div>}
             <div className="mt-4 text-center text-sm text-white">
               Vous n&apos;avez pas de compte ?{" "}
               <a href="/user/signup" className="underline underline-offset-4 hover:text-white/90">
