@@ -6,6 +6,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
+import { toast } from 'sonner';
 
 interface AuthFormProps {
   userType: 'professional' | 'user';
@@ -40,10 +41,18 @@ export default function AuthForm({ userType }: AuthFormProps) {
         type: userType
       });
 
+      // Show success toast
+      toast.success('Compte créé avec succès !');
+
       // Redirect to appropriate page
-      router.push('/main');
+      if (userType === 'professional') {
+        router.push('/auth/professional/mobile-page');
+      } else {
+        router.push('/auth/user/mobile-page');
+      }
     } catch (error: any) {
       setError(error.message);
+      toast.error(error.message);
     }
   };
 
