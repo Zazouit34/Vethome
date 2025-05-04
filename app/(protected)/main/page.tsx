@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, Bell } from "lucide-react";
+import { auth } from '@/lib/firebase';
 
 // Données fictives pour les vétérinaires
 const veterinaries = [
@@ -54,6 +55,18 @@ const services = [
 
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserName(user.displayName || user.email || 'Utilisateur');
+      } else {
+        setUserName(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const filteredVeterinaries = veterinaries.filter(vet =>
     vet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -74,7 +87,9 @@ export default function MainPage() {
             className="rounded-full w-12 h-12 md:w-24 md:h-24 object-cover border-2 border-white shadow"
           />
           <div className="flex flex-col">
-            <span className="font-bold text-base md:text-lg text-rose-500">Bienvenue, #Utilisateur</span>
+            <span className="font-bold text-base md:text-lg text-rose-500">
+              {userName ? `Bienvenue, ${userName}` : 'Bienvenue'}
+            </span>
             <span className="text-sm text-gray-700">Comment vas votre compagnon aujourd'hui !</span>
           </div>
         </Link>
