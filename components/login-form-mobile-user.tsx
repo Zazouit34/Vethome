@@ -65,7 +65,7 @@ export function LoginFormMobile({
             </div>
             <div className="mt-4 text-center text-sm text-white">
               Vous n&apos;avez pas de compte ?{" "}
-              <a href="#" className="underline underline-offset-4 hover:text-white/90">
+              <a href="/auth/user/signup" className="underline underline-offset-4 hover:text-white/90">
                 S&apos;inscrire
               </a>
             </div>
