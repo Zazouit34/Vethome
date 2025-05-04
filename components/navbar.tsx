@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useState } from "react"
 import { User, LogOut, Home, Briefcase, Stethoscope, Hotel } from "lucide-react"
+import { signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 
 export default function Component() {
@@ -75,15 +77,16 @@ export default function Component() {
                 Profil
               </Link>
               {/* Logout link */}
-              <Link
-                href="/"
+              <button
+                onClick={async () => {
+                  await signOut(auth);
+                  window.location.href = "/";
+                }}
                 className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
-                prefetch={false}
-                onClick={() => setOpen(false)}
               >
                 <LogOut className="w-5 h-5" />
                 Déconnexion
-              </Link>
+              </button>
             </div>
           </SheetContent>
         </Sheet>
