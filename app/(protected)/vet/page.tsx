@@ -43,7 +43,7 @@ export default function VetProfilePage() {
       </div>
 
       {/* Name */}
-      <div className="text-xl md:text-2xl font-semibold text-center mb-10">Dr: {name}</div>
+      <div className="text-xl md:text-2xl font-semibold text-center mb-10">Dr : {name}</div>
 
       {/* Buttons */}
       <div className="flex flex-col gap-6 w-full max-w-xs md:max-w-md">

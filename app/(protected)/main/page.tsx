@@ -68,7 +68,7 @@ export default function MainPage() {
         const profSnap = await getDoc(profRef);
         if (profSnap.exists()) {
           const data = profSnap.data();
-          setUserName(data.name || user.displayName || user.email || 'Utilisateur');
+          setUserName(`Dr : ${data.name || user.displayName || user.email || 'Utilisateur'}`);
           setProfileImage('/veterinary-woman.jpg');
           setProfileHref('/vet');
           return;
