@@ -23,7 +23,7 @@ export default function RootLayout({
           <div className="page-transitions">
             {children}
           </div>
-     
+      
         <Toaster />
       </body>
     </html>
