@@ -46,9 +46,9 @@ export default function AuthForm({ userType }: AuthFormProps) {
 
       // Redirect to appropriate page
       if (userType === 'professional') {
-        router.push('/auth/professional/mobile-page');
+        router.push('/professional/mobile-page');
       } else {
-        router.push('/auth/user/mobile-page');
+        router.push('/user/mobile-page');
       }
     } catch (error: any) {
       setError(error.message);
