@@ -35,7 +35,7 @@ export function LoginFormMobile({
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) {
         toast.success('Connexion réussie');
-        router.push('/auth/user/create-profile');
+        router.push('/main');
       } else {
         await signOut(auth);
         setError("Ce compte n'est pas un utilisateur particulier.");

@@ -35,7 +35,7 @@ export function LoginFormMobile({
       const profSnap = await getDoc(profRef);
       if (profSnap.exists()) {
         toast.success('Connexion réussie');
-        router.push('/auth/professional/create-profile');
+        router.push('/main');
       } else {
         await signOut(auth);
         setError("Ce compte n'est pas un professionnel.");

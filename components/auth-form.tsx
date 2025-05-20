@@ -44,11 +44,11 @@ export default function AuthForm({ userType }: AuthFormProps) {
       // Show success toast
       toast.success('Compte créé avec succès !');
 
-      // Redirect to appropriate page
+      // Redirect to appropriate create-profile page
       if (userType === 'professional') {
-        router.push('/auth/professional');
+        router.push('/auth/professional/create-profile');
       } else {
-        router.push('/auth/user');
+        router.push('/auth/user/create-profile');
       }
     } catch (error: any) {
       setError(error.message);
