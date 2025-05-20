@@ -64,7 +64,7 @@ export default function CreateProfile() {
   };
 
   const handlePromoClose = () => {
-    router.push('/vet');
+    router.push('/main');
   };
 
   const renderStep = () => {

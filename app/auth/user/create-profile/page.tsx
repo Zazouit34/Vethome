@@ -47,13 +47,13 @@ export default function CreateUserProfile() {
 
   const handleComplete = () => {
     toast.success("Profil créé avec succès")
-    router.push('/user');
+    router.push('/main');
   };
 
   const handleSkipPetSteps = () => {
     // Skip directly to completion
     toast.success("Profil créé avec succès")
-    router.push('/user');
+    router.push('/main');
   };
 
   const renderStep = () => {
