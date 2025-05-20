@@ -3,14 +3,34 @@
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { User, LogOut, Home, Briefcase, Stethoscope, Hotel } from "lucide-react"
 import { signOut } from "firebase/auth";
-import { auth } from "@/lib/firebase";
-
+import { auth, db } from "@/lib/firebase";
+import { doc, getDoc } from 'firebase/firestore';
 
 export default function Component() {
   const [open, setOpen] = useState(false);
+  const [profileHref, setProfileHref] = useState('/user');
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        // Try to fetch from professionals
+        const profRef = doc(db, 'professionals', user.uid);
+        const profSnap = await getDoc(profRef);
+        if (profSnap.exists()) {
+          setProfileHref('/vet');
+          return;
+        }
+        // If not a professional, set to user profile
+        setProfileHref('/user');
+      } else {
+        setProfileHref('/user');
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 bg-white dark:bg-gray-950 shadow-sm sticky top-0 z-50">
@@ -68,7 +88,7 @@ export default function Component() {
               <div className="border-t border-gray-200 my-4" />
               {/* Profile link */}
               <Link
-                href="/user"
+                href={profileHref}
                 className="flex w-full items-center justify-start gap-3 py-2 text-lg font-semibold text-gray-700"
                 prefetch={false}
                 onClick={() => setOpen(false)}
