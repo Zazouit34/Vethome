@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-       <MobileOnly>
+       {/* <MobileOnly> */}
           <div className="page-transitions">
             {children}
           </div>
-       </MobileOnly>
+       {/* </MobileOnly> */}
         <Toaster />
       </body>
     </html>
